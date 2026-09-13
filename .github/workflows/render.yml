@@ -22,10 +22,10 @@ jobs:
         run: npm install
 
       - name: Render GridWave
-        run: npx remotion render src/index.tsx GridWave output/GridWave.mp4 --video-bitrate 120M --crf 15
+        run: npx remotion render src/index.tsx GridWave output/GridWave.mp4 --video-bitrate 120M
 
       - name: Render GridWaveNeon
-        run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon.mp4 --video-bitrate 120M --crf 15
+        run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon.mp4 --video-bitrate 120M
 
       - name: Upload GridWave
         uses: actions/upload-artifact@v4
