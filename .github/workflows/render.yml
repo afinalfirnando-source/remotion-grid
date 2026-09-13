@@ -34,10 +34,10 @@ jobs:
         run: ls -lh output/*.mov
 
       - name: Encode GridWave to MP4
-        run: ffmpeg -y -i output/GridWave-prores.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p output/GridWave.mp4
+        run: ffmpeg -y -i output/GridWave-prores.mov -c:v libx264 -preset slow -b:v 200M -maxrate 250M -bufsize 400M -pix_fmt yuv420p output/GridWave.mp4
 
       - name: Encode GridWaveNeon to MP4
-        run: ffmpeg -y -i output/GridWaveNeon-prores.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p output/GridWaveNeon.mp4
+        run: ffmpeg -y -i output/GridWaveNeon-prores.mov -c:v libx264 -preset slow -b:v 200M -maxrate 250M -bufsize 400M -pix_fmt yuv420p output/GridWaveNeon.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
