@@ -1,4 +1,4 @@
-name: Render VortexTunnel
+name: Render PastelFluidWaves
 
 on:
   workflow_dispatch:
@@ -24,50 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render VortexTunnel Cyan (ProRes)
-        run: npx remotion render src/index.tsx VortexTunnel output/VortexTunnel-prores.mov --codec prores --prores-profile hq
+      - name: Render PastelFluidWaves (ProRes)
+        run: npx remotion render src/index.tsx PastelFluidWaves output/PastelFluidWaves-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FireVortex NeonPink (ProRes)
-        run: npx remotion render src/index.tsx FireVortex output/FireVortex-prores.mov --codec prores --prores-profile hq
-
-      - name: Render AuroraVortex ToxicGreen (ProRes)
-        run: npx remotion render src/index.tsx AuroraVortex output/AuroraVortex-prores.mov --codec prores --prores-profile hq
-
-      - name: Check ProRes sizes
+      - name: Check ProRes size
         run: ls -lh output/*.mov
 
-      - name: Encode VortexTunnel to MP4
-        run: ffmpeg -y -i output/VortexTunnel-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/VortexTunnel.mp4
+      - name: Encode PastelFluidWaves to MP4
+        run: ffmpeg -y -i output/PastelFluidWaves-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PastelFluidWaves.mp4
 
-      - name: Encode FireVortex to MP4
-        run: ffmpeg -y -i output/FireVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FireVortex.mp4
-
-      - name: Encode AuroraVortex to MP4
-        run: ffmpeg -y -i output/AuroraVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraVortex.mp4
-
-      - name: Check final file sizes
+      - name: Check final file size
         run: ls -lh output/*.mp4
 
-      - name: Upload VortexTunnel Cyan
+      - name: Upload PastelFluidWaves
         uses: actions/upload-artifact@v4
         with:
-          name: VortexTunnel-Cyan-4K
-          path: output/VortexTunnel.mp4
+          name: PastelFluidWaves-4K
+          path: output/PastelFluidWaves.mp4
 
-      - name: Upload FireVortex NeonPink
+      - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: FireVortex-NeonPink-4K
-          path: output/FireVortex.mp4
-
-      - name: Upload AuroraVortex ToxicGreen
-        uses: actions/upload-artifact@v4
-        with:
-          name: AuroraVortex-ToxicGreen-4K
-          path: output/AuroraVortex.mp4
-
-      - name: Upload ProRes masters
-        uses: actions/upload-artifact@v4
-        with:
-          name: ProRes-Masters
-          path: output/*.mov
+          name: PastelFluidWaves-ProRes
+          path: output/PastelFluidWaves-prores.mov
