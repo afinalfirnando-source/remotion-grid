@@ -1,4 +1,4 @@
-name: Render SphereRipple backgrounds
+name: Render DiamondKaleidoscope
 
 on:
   workflow_dispatch:
@@ -24,50 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render SphereRipple Ocean (ProRes)
-        run: npx remotion render src/index.tsx SphereRipple output/SphereRipple-prores.mov --codec prores --prores-profile hq
+      - name: Render DiamondKaleidoscope (ProRes)
+        run: npx remotion render src/index.tsx DiamondKaleidoscope output/DiamondKaleidoscope-prores.mov --codec prores --prores-profile hq
 
-      - name: Render NeonPurpleSphere (ProRes)
-        run: npx remotion render src/index.tsx NeonPurpleSphere output/NeonPurpleSphere-prores.mov --codec prores --prores-profile hq
-
-      - name: Render SunsetGoldSphere (ProRes)
-        run: npx remotion render src/index.tsx SunsetGoldSphere output/SunsetGoldSphere-prores.mov --codec prores --prores-profile hq
-
-      - name: Check ProRes sizes
+      - name: Check ProRes size
         run: ls -lh output/*.mov
 
-      - name: Encode SphereRipple Ocean to MP4
-        run: ffmpeg -y -i output/SphereRipple-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SphereRipple.mp4
+      - name: Encode DiamondKaleidoscope to MP4
+        run: ffmpeg -y -i output/DiamondKaleidoscope-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/DiamondKaleidoscope.mp4
 
-      - name: Encode NeonPurpleSphere to MP4
-        run: ffmpeg -y -i output/NeonPurpleSphere-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/NeonPurpleSphere.mp4
-
-      - name: Encode SunsetGoldSphere to MP4
-        run: ffmpeg -y -i output/SunsetGoldSphere-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SunsetGoldSphere.mp4
-
-      - name: Check final file sizes
+      - name: Check final file size
         run: ls -lh output/*.mp4
 
-      - name: Upload SphereRipple Ocean
+      - name: Upload DiamondKaleidoscope
         uses: actions/upload-artifact@v4
         with:
-          name: SphereRipple-Ocean-4K
-          path: output/SphereRipple.mp4
+          name: DiamondKaleidoscope-4K
+          path: output/DiamondKaleidoscope.mp4
 
-      - name: Upload NeonPurpleSphere
+      - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: NeonPurpleSphere-4K
-          path: output/NeonPurpleSphere.mp4
-
-      - name: Upload SunsetGoldSphere
-        uses: actions/upload-artifact@v4
-        with:
-          name: SunsetGoldSphere-4K
-          path: output/SunsetGoldSphere.mp4
-
-      - name: Upload ProRes masters
-        uses: actions/upload-artifact@v4
-        with:
-          name: ProRes-Masters
-          path: output/*.mov
+          name: DiamondKaleidoscope-ProRes
+          path: output/DiamondKaleidoscope-prores.mov

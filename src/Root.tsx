@@ -2,6 +2,7 @@ import React from 'react';
 import { Composition } from 'remotion';
 import { GridDots } from './components/GridDots';
 import { SphereRipple } from './components/SphereRipple';
+import { DiamondKaleidoscope } from './components/DiamondKaleidoscope';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -54,6 +55,16 @@ export const RemotionRoot: React.FC = () => {
         id="SunsetGoldSphere"
         component={() => (
           <SphereRipple width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunsetGold" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="DiamondKaleidoscope"
+        component={() => (
+          <DiamondKaleidoscope width={3840} height={2160} totalFrames={DURATION} speed={1} />
         )}
         durationInFrames={DURATION}
         fps={FPS}
