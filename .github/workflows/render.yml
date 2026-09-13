@@ -24,19 +24,22 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render GridWave (PNG sequence)
-        run: npx remotion render src/index.tsx GridWave output/gridwave-seq --image-format png
+      - name: Render GridWave (ProRes)
+        run: npx remotion render src/index.tsx GridWave output/GridWave-prores.mov --codec prores --prores-profile 422
+
+      - name: Render GridWaveNeon (ProRes)
+        run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon-prores.mov --codec prores --prores-profile 422
+
+      - name: Check ProRes sizes
+        run: ls -lh output/*.mov
 
       - name: Encode GridWave to MP4
-        run: ffmpeg -y -framerate 30 -i output/gridwave-seq/%06d.png -c:v libx264 -preset slow -b:v 100M -pix_fmt yuv420p output/GridWave.mp4
-
-      - name: Render GridWaveNeon (PNG sequence)
-        run: npx remotion render src/index.tsx GridWaveNeon output/gridwaveneon-seq --image-format png
+        run: ffmpeg -y -i output/GridWave-prores.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p output/GridWave.mp4
 
       - name: Encode GridWaveNeon to MP4
-        run: ffmpeg -y -framerate 30 -i output/gridwaveneon-seq/%06d.png -c:v libx264 -preset slow -b:v 100M -pix_fmt yuv420p output/GridWaveNeon.mp4
+        run: ffmpeg -y -i output/GridWaveNeon-prores.mov -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p output/GridWaveNeon.mp4
 
-      - name: Check file sizes
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
       - name: Upload GridWave
@@ -50,3 +53,9 @@ jobs:
         with:
           name: GridWaveNeon-4K
           path: output/GridWaveNeon.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProRes-Masters
+          path: output/*.mov
