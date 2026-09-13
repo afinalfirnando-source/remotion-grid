@@ -22,13 +22,13 @@ jobs:
         run: npm install
 
       - name: Render GridWave (PNG sequence)
-        run: npx remotion render src/index.tsx GridWave output/gridwave-seq --image-format png --codec png
+        run: npx remotion render src/index.tsx GridWave output/gridwave-seq --image-format png
 
       - name: Encode GridWave to MP4
         run: ffmpeg -y -framerate 30 -i output/gridwave-seq/%06d.png -c:v libx264 -preset slow -b:v 100M -pix_fmt yuv420p output/GridWave.mp4
 
       - name: Render GridWaveNeon (PNG sequence)
-        run: npx remotion render src/index.tsx GridWaveNeon output/gridwaveneon-seq --image-format png --codec png
+        run: npx remotion render src/index.tsx GridWaveNeon output/gridwaveneon-seq --image-format png
 
       - name: Encode GridWaveNeon to MP4
         run: ffmpeg -y -framerate 30 -i output/gridwaveneon-seq/%06d.png -c:v libx264 -preset slow -b:v 100M -pix_fmt yuv420p output/GridWaveNeon.mp4
