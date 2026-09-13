@@ -4,6 +4,7 @@ import { GridDots } from './components/GridDots';
 import { SphereRipple } from './components/SphereRipple';
 import { DiamondKaleidoscope } from './components/DiamondKaleidoscope';
 import { PlexusNetwork } from './components/PlexusNetwork';
+import { VortexTunnel } from './components/VortexTunnel';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -76,6 +77,36 @@ export const RemotionRoot: React.FC = () => {
         id="PlexusNetwork"
         component={() => (
           <PlexusNetwork width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="VortexTunnel"
+        component={() => (
+          <VortexTunnel width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="cyan" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FireVortex"
+        component={() => (
+          <VortexTunnel width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neonPink" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraVortex"
+        component={() => (
+          <VortexTunnel width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="toxicGreen" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

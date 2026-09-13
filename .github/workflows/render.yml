@@ -1,4 +1,4 @@
-name: Render PlexusNetwork
+name: Render VortexTunnel
 
 on:
   workflow_dispatch:
@@ -24,26 +24,50 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PlexusNetwork (ProRes)
-        run: npx remotion render src/index.tsx PlexusNetwork output/PlexusNetwork-prores.mov --codec prores --prores-profile hq
+      - name: Render VortexTunnel Cyan (ProRes)
+        run: npx remotion render src/index.tsx VortexTunnel output/VortexTunnel-prores.mov --codec prores --prores-profile hq
 
-      - name: Check ProRes size
+      - name: Render FireVortex NeonPink (ProRes)
+        run: npx remotion render src/index.tsx FireVortex output/FireVortex-prores.mov --codec prores --prores-profile hq
+
+      - name: Render AuroraVortex ToxicGreen (ProRes)
+        run: npx remotion render src/index.tsx AuroraVortex output/AuroraVortex-prores.mov --codec prores --prores-profile hq
+
+      - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PlexusNetwork to MP4
-        run: ffmpeg -y -i output/PlexusNetwork-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlexusNetwork.mp4
+      - name: Encode VortexTunnel to MP4
+        run: ffmpeg -y -i output/VortexTunnel-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/VortexTunnel.mp4
 
-      - name: Check final file size
+      - name: Encode FireVortex to MP4
+        run: ffmpeg -y -i output/FireVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FireVortex.mp4
+
+      - name: Encode AuroraVortex to MP4
+        run: ffmpeg -y -i output/AuroraVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraVortex.mp4
+
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PlexusNetwork
+      - name: Upload VortexTunnel Cyan
         uses: actions/upload-artifact@v4
         with:
-          name: PlexusNetwork-4K
-          path: output/PlexusNetwork.mp4
+          name: VortexTunnel-Cyan-4K
+          path: output/VortexTunnel.mp4
 
-      - name: Upload ProRes master
+      - name: Upload FireVortex NeonPink
         uses: actions/upload-artifact@v4
         with:
-          name: PlexusNetwork-ProRes
-          path: output/PlexusNetwork-prores.mov
+          name: FireVortex-NeonPink-4K
+          path: output/FireVortex.mp4
+
+      - name: Upload AuroraVortex ToxicGreen
+        uses: actions/upload-artifact@v4
+        with:
+          name: AuroraVortex-ToxicGreen-4K
+          path: output/AuroraVortex.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProRes-Masters
+          path: output/*.mov
