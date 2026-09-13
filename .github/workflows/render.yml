@@ -1,4 +1,4 @@
-name: Render DiamondKaleidoscope
+name: Render PlexusNetwork
 
 on:
   workflow_dispatch:
@@ -24,26 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render DiamondKaleidoscope (ProRes)
-        run: npx remotion render src/index.tsx DiamondKaleidoscope output/DiamondKaleidoscope-prores.mov --codec prores --prores-profile hq
+      - name: Render PlexusNetwork (ProRes)
+        run: npx remotion render src/index.tsx PlexusNetwork output/PlexusNetwork-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes size
         run: ls -lh output/*.mov
 
-      - name: Encode DiamondKaleidoscope to MP4
-        run: ffmpeg -y -i output/DiamondKaleidoscope-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/DiamondKaleidoscope.mp4
+      - name: Encode PlexusNetwork to MP4
+        run: ffmpeg -y -i output/PlexusNetwork-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlexusNetwork.mp4
 
       - name: Check final file size
         run: ls -lh output/*.mp4
 
-      - name: Upload DiamondKaleidoscope
+      - name: Upload PlexusNetwork
         uses: actions/upload-artifact@v4
         with:
-          name: DiamondKaleidoscope-4K
-          path: output/DiamondKaleidoscope.mp4
+          name: PlexusNetwork-4K
+          path: output/PlexusNetwork.mp4
 
       - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: DiamondKaleidoscope-ProRes
-          path: output/DiamondKaleidoscope-prores.mov
+          name: PlexusNetwork-ProRes
+          path: output/PlexusNetwork-prores.mov
