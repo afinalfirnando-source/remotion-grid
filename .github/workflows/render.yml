@@ -1,4 +1,4 @@
-name: Render Grid backgrounds
+name: Render SphereRipple backgrounds
 
 on:
   workflow_dispatch:
@@ -24,12 +24,6 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render GridWave (ProRes)
-        run: npx remotion render src/index.tsx GridWave output/GridWave-prores.mov --codec prores --prores-profile hq
-
-      - name: Render GridWaveNeon (ProRes)
-        run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon-prores.mov --codec prores --prores-profile hq
-
       - name: Render SphereRipple Ocean (ProRes)
         run: npx remotion render src/index.tsx SphereRipple output/SphereRipple-prores.mov --codec prores --prores-profile hq
 
@@ -42,12 +36,6 @@ jobs:
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode GridWave to MP4
-        run: ffmpeg -y -i output/GridWave-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GridWave.mp4
-
-      - name: Encode GridWaveNeon to MP4
-        run: ffmpeg -y -i output/GridWaveNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GridWaveNeon.mp4
-
       - name: Encode SphereRipple Ocean to MP4
         run: ffmpeg -y -i output/SphereRipple-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SphereRipple.mp4
 
@@ -59,18 +47,6 @@ jobs:
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
-
-      - name: Upload GridWave
-        uses: actions/upload-artifact@v4
-        with:
-          name: GridWave-4K
-          path: output/GridWave.mp4
-
-      - name: Upload GridWaveNeon
-        uses: actions/upload-artifact@v4
-        with:
-          name: GridWaveNeon-4K
-          path: output/GridWaveNeon.mp4
 
       - name: Upload SphereRipple Ocean
         uses: actions/upload-artifact@v4
