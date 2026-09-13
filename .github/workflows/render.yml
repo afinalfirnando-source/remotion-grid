@@ -1,0 +1,40 @@
+name: Render Grid backgrounds
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Render GridWave
+        run: npx remotion render src/index.tsx GridWave output/GridWave.mp4
+
+      - name: Render GridWaveNeon
+        run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon.mp4
+
+      - name: Upload GridWave
+        uses: actions/upload-artifact@v4
+        with:
+          name: GridWave-4K
+          path: output/GridWave.mp4
+
+      - name: Upload GridWaveNeon
+        uses: actions/upload-artifact@v4
+        with:
+          name: GridWaveNeon-4K
+          path: output/GridWaveNeon.mp4
