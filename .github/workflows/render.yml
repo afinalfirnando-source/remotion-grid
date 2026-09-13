@@ -30,6 +30,15 @@ jobs:
       - name: Render GridWaveNeon (ProRes)
         run: npx remotion render src/index.tsx GridWaveNeon output/GridWaveNeon-prores.mov --codec prores --prores-profile hq
 
+      - name: Render SphereRipple Ocean (ProRes)
+        run: npx remotion render src/index.tsx SphereRipple output/SphereRipple-prores.mov --codec prores --prores-profile hq
+
+      - name: Render NeonPurpleSphere (ProRes)
+        run: npx remotion render src/index.tsx NeonPurpleSphere output/NeonPurpleSphere-prores.mov --codec prores --prores-profile hq
+
+      - name: Render SunsetGoldSphere (ProRes)
+        run: npx remotion render src/index.tsx SunsetGoldSphere output/SunsetGoldSphere-prores.mov --codec prores --prores-profile hq
+
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
@@ -38,6 +47,15 @@ jobs:
 
       - name: Encode GridWaveNeon to MP4
         run: ffmpeg -y -i output/GridWaveNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GridWaveNeon.mp4
+
+      - name: Encode SphereRipple Ocean to MP4
+        run: ffmpeg -y -i output/SphereRipple-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SphereRipple.mp4
+
+      - name: Encode NeonPurpleSphere to MP4
+        run: ffmpeg -y -i output/NeonPurpleSphere-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/NeonPurpleSphere.mp4
+
+      - name: Encode SunsetGoldSphere to MP4
+        run: ffmpeg -y -i output/SunsetGoldSphere-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SunsetGoldSphere.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
@@ -53,6 +71,24 @@ jobs:
         with:
           name: GridWaveNeon-4K
           path: output/GridWaveNeon.mp4
+
+      - name: Upload SphereRipple Ocean
+        uses: actions/upload-artifact@v4
+        with:
+          name: SphereRipple-Ocean-4K
+          path: output/SphereRipple.mp4
+
+      - name: Upload NeonPurpleSphere
+        uses: actions/upload-artifact@v4
+        with:
+          name: NeonPurpleSphere-4K
+          path: output/NeonPurpleSphere.mp4
+
+      - name: Upload SunsetGoldSphere
+        uses: actions/upload-artifact@v4
+        with:
+          name: SunsetGoldSphere-4K
+          path: output/SunsetGoldSphere.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
