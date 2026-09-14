@@ -6,6 +6,7 @@ import { DiamondKaleidoscope } from './components/DiamondKaleidoscope';
 import { PlexusNetwork } from './components/PlexusNetwork';
 import { VortexTunnel } from './components/VortexTunnel';
 import { PastelFluidWaves } from './components/PastelFluidWaves';
+import { HexagonalWave3D } from './components/HexagonalWave3D';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -118,6 +119,36 @@ export const RemotionRoot: React.FC = () => {
         id="PastelFluidWaves"
         component={() => (
           <PastelFluidWaves width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexagonalWave3D"
+        component={() => (
+          <HexagonalWave3D width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="cyan" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MagmaHex"
+        component={() => (
+          <HexagonalWave3D width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="magma" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraHex"
+        component={() => (
+          <HexagonalWave3D width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="aurora" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

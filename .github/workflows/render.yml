@@ -1,4 +1,4 @@
-name: Render PastelFluidWaves
+name: Render HexagonalWave3D (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,26 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PastelFluidWaves (ProRes)
-        run: npx remotion render src/index.tsx PastelFluidWaves output/PastelFluidWaves-prores.mov --codec prores --prores-profile hq
+      - name: Render HexagonalWave3D Cyan (ProRes)
+        run: npx remotion render src/index.tsx HexagonalWave3D output/HexagonalWave3D-cyan-prores.mov --codec prores --prores-profile hq
 
-      - name: Check ProRes size
+      - name: Render MagmaHex (ProRes)
+        run: npx remotion render src/index.tsx MagmaHex output/MagmaHex-prores.mov --codec prores --prores-profile hq
+
+      - name: Render AuroraHex (ProRes)
+        run: npx remotion render src/index.tsx AuroraHex output/AuroraHex-prores.mov --codec prores --prores-profile hq
+
+      - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PastelFluidWaves to MP4
-        run: ffmpeg -y -i output/PastelFluidWaves-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PastelFluidWaves.mp4
+      - name: Encode HexagonalWave3D Cyan to MP4
+        run: ffmpeg -y -i output/HexagonalWave3D-cyan-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexagonalWave3D-cyan.mp4
 
-      - name: Check final file size
+      - name: Encode MagmaHex to MP4
+        run: ffmpeg -y -i output/MagmaHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MagmaHex.mp4
+
+      - name: Encode AuroraHex to MP4
+        run: ffmpeg -y -i output/AuroraHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraHex.mp4
+
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PastelFluidWaves
+      - name: Upload HexagonalWave3D Cyan
         uses: actions/upload-artifact@v4
         with:
-          name: PastelFluidWaves-4K
-          path: output/PastelFluidWaves.mp4
+          name: HexagonalWave3D-Cyan-4K
+          path: output/HexagonalWave3D-cyan.mp4
 
-      - name: Upload ProRes master
+      - name: Upload MagmaHex
         uses: actions/upload-artifact@v4
         with:
-          name: PastelFluidWaves-ProRes
-          path: output/PastelFluidWaves-prores.mov
+          name: MagmaHex-4K
+          path: output/MagmaHex.mp4
+
+      - name: Upload AuroraHex
+        uses: actions/upload-artifact@v4
+        with:
+          name: AuroraHex-4K
+          path: output/AuroraHex.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: HexWave3D-ProRes
+          path: |
+            output/HexagonalWave3D-cyan-prores.mov
+            output/MagmaHex-prores.mov
+            output/AuroraHex-prores.mov
