@@ -6,3 +6,4 @@ export { VortexTunnel } from './VortexTunnel';
 export { PastelFluidWaves } from './PastelFluidWaves';
 export { HexagonalWave3D } from './HexagonalWave3D';
 export { BreathingMesh } from './BreathingMesh';
+export { HypnoSpiral } from './HypnoSpiral';

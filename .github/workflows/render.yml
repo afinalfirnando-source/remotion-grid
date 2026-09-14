@@ -1,4 +1,4 @@
-name: Render BreathingMesh (3 colors)
+name: Render HypnoSpiral (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,53 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render BreathingMeshBlue (ProRes)
-        run: npx remotion render src/index.tsx BreathingMeshBlue output/BreathingMeshBlue-prores.mov --codec prores --prores-profile hq
+      - name: Render HypnoSpiralClassic (ProRes)
+        run: npx remotion render src/index.tsx HypnoSpiralClassic output/HypnoSpiralClassic-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BreathingMeshSteel (ProRes)
-        run: npx remotion render src/index.tsx BreathingMeshSteel output/BreathingMeshSteel-prores.mov --codec prores --prores-profile hq
+      - name: Render HypnoSpiralNeon (ProRes)
+        run: npx remotion render src/index.tsx HypnoSpiralNeon output/HypnoSpiralNeon-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BreathingMeshDeepSea (ProRes)
-        run: npx remotion render src/index.tsx BreathingMeshDeepSea output/BreathingMeshDeepSea-prores.mov --codec prores --prores-profile hq
+      - name: Render HypnoSpiralSunset (ProRes)
+        run: npx remotion render src/index.tsx HypnoSpiralSunset output/HypnoSpiralSunset-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode BreathingMeshBlue to MP4
-        run: ffmpeg -y -i output/BreathingMeshBlue-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshBlue.mp4
+      - name: Encode HypnoSpiralClassic to MP4
+        run: ffmpeg -y -i output/HypnoSpiralClassic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralClassic.mp4
 
-      - name: Encode BreathingMeshSteel to MP4
-        run: ffmpeg -y -i output/BreathingMeshSteel-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshSteel.mp4
+      - name: Encode HypnoSpiralNeon to MP4
+        run: ffmpeg -y -i output/HypnoSpiralNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralNeon.mp4
 
-      - name: Encode BreathingMeshDeepSea to MP4
-        run: ffmpeg -y -i output/BreathingMeshDeepSea-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshDeepSea.mp4
+      - name: Encode HypnoSpiralSunset to MP4
+        run: ffmpeg -y -i output/HypnoSpiralSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralSunset.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload BreathingMeshBlue
+      - name: Upload HypnoSpiralClassic
         uses: actions/upload-artifact@v4
         with:
-          name: BreathingMeshBlue-4K
-          path: output/BreathingMeshBlue.mp4
+          name: HypnoSpiralClassic-4K
+          path: output/HypnoSpiralClassic.mp4
 
-      - name: Upload BreathingMeshSteel
+      - name: Upload HypnoSpiralNeon
         uses: actions/upload-artifact@v4
         with:
-          name: BreathingMeshSteel-4K
-          path: output/BreathingMeshSteel.mp4
+          name: HypnoSpiralNeon-4K
+          path: output/HypnoSpiralNeon.mp4
 
-      - name: Upload BreathingMeshDeepSea
+      - name: Upload HypnoSpiralSunset
         uses: actions/upload-artifact@v4
         with:
-          name: BreathingMeshDeepSea-4K
-          path: output/BreathingMeshDeepSea.mp4
+          name: HypnoSpiralSunset-4K
+          path: output/HypnoSpiralSunset.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: BreathingMesh-ProRes
+          name: HypnoSpiral-ProRes
           path: |
-            output/BreathingMeshBlue-prores.mov
-            output/BreathingMeshSteel-prores.mov
-            output/BreathingMeshDeepSea-prores.mov
+            output/HypnoSpiralClassic-prores.mov
+            output/HypnoSpiralNeon-prores.mov
+            output/HypnoSpiralSunset-prores.mov
