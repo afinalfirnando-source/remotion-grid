@@ -9,6 +9,7 @@ import { PastelFluidWaves } from './components/PastelFluidWaves';
 import { HexagonalWave3D } from './components/HexagonalWave3D';
 import { BreathingMesh } from './components/BreathingMesh';
 import { HypnoSpiral } from './components/HypnoSpiral';
+import TorusKnot from './components/TorusKnot';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -211,6 +212,16 @@ export const RemotionRoot: React.FC = () => {
         id="HypnoSpiralSunset"
         component={() => (
           <HypnoSpiral width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunset" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="TorusKnot"
+        component={() => (
+          <TorusKnot width={3840} height={2160} totalFrames={DURATION} speed={1} />
         )}
         durationInFrames={DURATION}
         fps={FPS}

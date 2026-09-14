@@ -7,3 +7,4 @@ export { PastelFluidWaves } from './PastelFluidWaves';
 export { HexagonalWave3D } from './HexagonalWave3D';
 export { BreathingMesh } from './BreathingMesh';
 export { HypnoSpiral } from './HypnoSpiral';
+export { default as TorusKnot } from './TorusKnot';

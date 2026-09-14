@@ -1,4 +1,4 @@
-name: Render HypnoSpiral (3 colors)
+name: Render TorusKnot
 
 on:
   workflow_dispatch:
@@ -24,53 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render HypnoSpiralClassic (ProRes)
-        run: npx remotion render src/index.tsx HypnoSpiralClassic output/HypnoSpiralClassic-prores.mov --codec prores --prores-profile hq
+      - name: Render TorusKnot (ProRes)
+        run: npx remotion render src/index.tsx TorusKnot output/TorusKnot-prores.mov --codec prores --prores-profile hq
 
-      - name: Render HypnoSpiralNeon (ProRes)
-        run: npx remotion render src/index.tsx HypnoSpiralNeon output/HypnoSpiralNeon-prores.mov --codec prores --prores-profile hq
-
-      - name: Render HypnoSpiralSunset (ProRes)
-        run: npx remotion render src/index.tsx HypnoSpiralSunset output/HypnoSpiralSunset-prores.mov --codec prores --prores-profile hq
-
-      - name: Check ProRes sizes
+      - name: Check ProRes size
         run: ls -lh output/*.mov
 
-      - name: Encode HypnoSpiralClassic to MP4
-        run: ffmpeg -y -i output/HypnoSpiralClassic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralClassic.mp4
+      - name: Encode TorusKnot to MP4
+        run: ffmpeg -y -i output/TorusKnot-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/TorusKnot.mp4
 
-      - name: Encode HypnoSpiralNeon to MP4
-        run: ffmpeg -y -i output/HypnoSpiralNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralNeon.mp4
-
-      - name: Encode HypnoSpiralSunset to MP4
-        run: ffmpeg -y -i output/HypnoSpiralSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HypnoSpiralSunset.mp4
-
-      - name: Check final file sizes
+      - name: Check final file size
         run: ls -lh output/*.mp4
 
-      - name: Upload HypnoSpiralClassic
+      - name: Upload TorusKnot
         uses: actions/upload-artifact@v4
         with:
-          name: HypnoSpiralClassic-4K
-          path: output/HypnoSpiralClassic.mp4
+          name: TorusKnot-4K
+          path: output/TorusKnot.mp4
 
-      - name: Upload HypnoSpiralNeon
+      - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: HypnoSpiralNeon-4K
-          path: output/HypnoSpiralNeon.mp4
-
-      - name: Upload HypnoSpiralSunset
-        uses: actions/upload-artifact@v4
-        with:
-          name: HypnoSpiralSunset-4K
-          path: output/HypnoSpiralSunset.mp4
-
-      - name: Upload ProRes masters
-        uses: actions/upload-artifact@v4
-        with:
-          name: HypnoSpiral-ProRes
-          path: |
-            output/HypnoSpiralClassic-prores.mov
-            output/HypnoSpiralNeon-prores.mov
-            output/HypnoSpiralSunset-prores.mov
+          name: TorusKnot-ProRes
+          path: output/TorusKnot-prores.mov
