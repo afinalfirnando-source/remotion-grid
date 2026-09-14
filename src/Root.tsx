@@ -7,6 +7,7 @@ import { PlexusNetwork } from './components/PlexusNetwork';
 import { VortexTunnel } from './components/VortexTunnel';
 import { PastelFluidWaves } from './components/PastelFluidWaves';
 import { HexagonalWave3D } from './components/HexagonalWave3D';
+import { BreathingMesh } from './components/BreathingMesh';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -149,6 +150,36 @@ export const RemotionRoot: React.FC = () => {
         id="AuroraHex"
         component={() => (
           <HexagonalWave3D width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="aurora" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BreathingMeshBlue"
+        component={() => (
+          <BreathingMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="blueOcean" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BreathingMeshSteel"
+        component={() => (
+          <BreathingMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="steel" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BreathingMeshDeepSea"
+        component={() => (
+          <BreathingMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="deepSea" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

@@ -1,4 +1,4 @@
-name: Render HexagonalWave3D (3 colors)
+name: Render BreathingMesh (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,53 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render HexagonalWave3D Cyan (ProRes)
-        run: npx remotion render src/index.tsx HexagonalWave3D output/HexagonalWave3D-cyan-prores.mov --codec prores --prores-profile hq
+      - name: Render BreathingMeshBlue (ProRes)
+        run: npx remotion render src/index.tsx BreathingMeshBlue output/BreathingMeshBlue-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MagmaHex (ProRes)
-        run: npx remotion render src/index.tsx MagmaHex output/MagmaHex-prores.mov --codec prores --prores-profile hq
+      - name: Render BreathingMeshSteel (ProRes)
+        run: npx remotion render src/index.tsx BreathingMeshSteel output/BreathingMeshSteel-prores.mov --codec prores --prores-profile hq
 
-      - name: Render AuroraHex (ProRes)
-        run: npx remotion render src/index.tsx AuroraHex output/AuroraHex-prores.mov --codec prores --prores-profile hq
+      - name: Render BreathingMeshDeepSea (ProRes)
+        run: npx remotion render src/index.tsx BreathingMeshDeepSea output/BreathingMeshDeepSea-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode HexagonalWave3D Cyan to MP4
-        run: ffmpeg -y -i output/HexagonalWave3D-cyan-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexagonalWave3D-cyan.mp4
+      - name: Encode BreathingMeshBlue to MP4
+        run: ffmpeg -y -i output/BreathingMeshBlue-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshBlue.mp4
 
-      - name: Encode MagmaHex to MP4
-        run: ffmpeg -y -i output/MagmaHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MagmaHex.mp4
+      - name: Encode BreathingMeshSteel to MP4
+        run: ffmpeg -y -i output/BreathingMeshSteel-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshSteel.mp4
 
-      - name: Encode AuroraHex to MP4
-        run: ffmpeg -y -i output/AuroraHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraHex.mp4
+      - name: Encode BreathingMeshDeepSea to MP4
+        run: ffmpeg -y -i output/BreathingMeshDeepSea-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BreathingMeshDeepSea.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload HexagonalWave3D Cyan
+      - name: Upload BreathingMeshBlue
         uses: actions/upload-artifact@v4
         with:
-          name: HexagonalWave3D-Cyan-4K
-          path: output/HexagonalWave3D-cyan.mp4
+          name: BreathingMeshBlue-4K
+          path: output/BreathingMeshBlue.mp4
 
-      - name: Upload MagmaHex
+      - name: Upload BreathingMeshSteel
         uses: actions/upload-artifact@v4
         with:
-          name: MagmaHex-4K
-          path: output/MagmaHex.mp4
+          name: BreathingMeshSteel-4K
+          path: output/BreathingMeshSteel.mp4
 
-      - name: Upload AuroraHex
+      - name: Upload BreathingMeshDeepSea
         uses: actions/upload-artifact@v4
         with:
-          name: AuroraHex-4K
-          path: output/AuroraHex.mp4
+          name: BreathingMeshDeepSea-4K
+          path: output/BreathingMeshDeepSea.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: HexWave3D-ProRes
+          name: BreathingMesh-ProRes
           path: |
-            output/HexagonalWave3D-cyan-prores.mov
-            output/MagmaHex-prores.mov
-            output/AuroraHex-prores.mov
+            output/BreathingMeshBlue-prores.mov
+            output/BreathingMeshSteel-prores.mov
+            output/BreathingMeshDeepSea-prores.mov
