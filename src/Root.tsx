@@ -13,6 +13,7 @@ import TorusKnot from './components/TorusKnot';
 import { PurpleCubes } from './components/PurpleCubes';
 import { HexCubes } from './components/HexCubes';
 import { RadialHex } from './components/RadialHex';
+import RetroWaves from './components/RetroWaves';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -315,6 +316,36 @@ export const RemotionRoot: React.FC = () => {
         id="RadialHexGreen"
         component={() => (
           <RadialHex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="green" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RetroWaves"
+        component={() => (
+          <RetroWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="classic" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RetroWavesCandy"
+        component={() => (
+          <RetroWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="candy" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RetroWavesMiami"
+        component={() => (
+          <RetroWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="miami" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

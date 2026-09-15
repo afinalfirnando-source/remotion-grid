@@ -1,4 +1,4 @@
-name: Render RadialHex (3 colors)
+name: Render RetroWaves (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,53 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render RadialHex (ProRes)
-        run: npx remotion render src/index.tsx RadialHex output/RadialHex-prores.mov --codec prores --prores-profile hq
+      - name: Render RetroWaves Classic (ProRes)
+        run: npx remotion render src/index.tsx RetroWaves output/RetroWaves-prores.mov --codec prores --prores-profile hq
 
-      - name: Render RadialHexRed (ProRes)
-        run: npx remotion render src/index.tsx RadialHexRed output/RadialHexRed-prores.mov --codec prores --prores-profile hq
+      - name: Render RetroWaves Candy (ProRes)
+        run: npx remotion render src/index.tsx RetroWavesCandy output/RetroWavesCandy-prores.mov --codec prores --prores-profile hq
 
-      - name: Render RadialHexGreen (ProRes)
-        run: npx remotion render src/index.tsx RadialHexGreen output/RadialHexGreen-prores.mov --codec prores --prores-profile hq
+      - name: Render RetroWaves Miami (ProRes)
+        run: npx remotion render src/index.tsx RetroWavesMiami output/RetroWavesMiami-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode RadialHex to MP4
-        run: ffmpeg -y -i output/RadialHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHex.mp4
+      - name: Encode RetroWaves Classic to MP4
+        run: ffmpeg -y -i output/RetroWaves-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWaves.mp4
 
-      - name: Encode RadialHexRed to MP4
-        run: ffmpeg -y -i output/RadialHexRed-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHexRed.mp4
+      - name: Encode RetroWaves Candy to MP4
+        run: ffmpeg -y -i output/RetroWavesCandy-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWavesCandy.mp4
 
-      - name: Encode RadialHexGreen to MP4
-        run: ffmpeg -y -i output/RadialHexGreen-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHexGreen.mp4
+      - name: Encode RetroWaves Miami to MP4
+        run: ffmpeg -y -i output/RetroWavesMiami-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWavesMiami.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload RadialHex
+      - name: Upload RetroWaves Classic
         uses: actions/upload-artifact@v4
         with:
-          name: RadialHex-4K
-          path: output/RadialHex.mp4
+          name: RetroWaves-Classic-4K
+          path: output/RetroWaves.mp4
 
-      - name: Upload RadialHexRed
+      - name: Upload RetroWaves Candy
         uses: actions/upload-artifact@v4
         with:
-          name: RadialHexRed-4K
-          path: output/RadialHexRed.mp4
+          name: RetroWaves-Candy-4K
+          path: output/RetroWavesCandy.mp4
 
-      - name: Upload RadialHexGreen
+      - name: Upload RetroWaves Miami
         uses: actions/upload-artifact@v4
         with:
-          name: RadialHexGreen-4K
-          path: output/RadialHexGreen.mp4
+          name: RetroWaves-Miami-4K
+          path: output/RetroWavesMiami.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: RadialHex-ProRes
+          name: RetroWaves-ProRes
           path: |
-            output/RadialHex-prores.mov
-            output/RadialHexRed-prores.mov
-            output/RadialHexGreen-prores.mov
+            output/RetroWaves-prores.mov
+            output/RetroWavesCandy-prores.mov
+            output/RetroWavesMiami-prores.mov

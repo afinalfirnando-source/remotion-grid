@@ -11,3 +11,4 @@ export { default as TorusKnot } from './TorusKnot';
 export { PurpleCubes } from './PurpleCubes';
 export { HexCubes } from './HexCubes';
 export { RadialHex } from './RadialHex';
+export { default as RetroWaves } from './RetroWaves';
