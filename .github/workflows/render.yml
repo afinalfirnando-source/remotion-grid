@@ -1,4 +1,4 @@
-name: Render 6 Cubes Videos
+name: Render RadialHex (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,92 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PurpleCubes (ProRes)
-        run: npx remotion render src/index.tsx PurpleCubes output/PurpleCubes-prores.mov --codec prores --prores-profile hq
+      - name: Render RadialHex (ProRes)
+        run: npx remotion render src/index.tsx RadialHex output/RadialHex-prores.mov --codec prores --prores-profile hq
 
-      - name: Render NeonCubes (ProRes)
-        run: npx remotion render src/index.tsx NeonCubes output/NeonCubes-prores.mov --codec prores --prores-profile hq
+      - name: Render RadialHexRed (ProRes)
+        run: npx remotion render src/index.tsx RadialHexRed output/RadialHexRed-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MagmaCubes (ProRes)
-        run: npx remotion render src/index.tsx MagmaCubes output/MagmaCubes-prores.mov --codec prores --prores-profile hq
-
-      - name: Render EmeraldHex (ProRes)
-        run: npx remotion render src/index.tsx EmeraldHex output/EmeraldHex-prores.mov --codec prores --prores-profile hq
-
-      - name: Render OceanHex (ProRes)
-        run: npx remotion render src/index.tsx OceanHex output/OceanHex-prores.mov --codec prores --prores-profile hq
-
-      - name: Render LavaHex (ProRes)
-        run: npx remotion render src/index.tsx LavaHex output/LavaHex-prores.mov --codec prores --prores-profile hq
+      - name: Render RadialHexGreen (ProRes)
+        run: npx remotion render src/index.tsx RadialHexGreen output/RadialHexGreen-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PurpleCubes to MP4
-        run: ffmpeg -y -i output/PurpleCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PurpleCubes.mp4
+      - name: Encode RadialHex to MP4
+        run: ffmpeg -y -i output/RadialHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHex.mp4
 
-      - name: Encode NeonCubes to MP4
-        run: ffmpeg -y -i output/NeonCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/NeonCubes.mp4
+      - name: Encode RadialHexRed to MP4
+        run: ffmpeg -y -i output/RadialHexRed-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHexRed.mp4
 
-      - name: Encode MagmaCubes to MP4
-        run: ffmpeg -y -i output/MagmaCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MagmaCubes.mp4
-
-      - name: Encode EmeraldHex to MP4
-        run: ffmpeg -y -i output/EmeraldHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/EmeraldHex.mp4
-
-      - name: Encode OceanHex to MP4
-        run: ffmpeg -y -i output/OceanHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/OceanHex.mp4
-
-      - name: Encode LavaHex to MP4
-        run: ffmpeg -y -i output/LavaHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaHex.mp4
+      - name: Encode RadialHexGreen to MP4
+        run: ffmpeg -y -i output/RadialHexGreen-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RadialHexGreen.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PurpleCubes
+      - name: Upload RadialHex
         uses: actions/upload-artifact@v4
         with:
-          name: PurpleCubes-4K
-          path: output/PurpleCubes.mp4
+          name: RadialHex-4K
+          path: output/RadialHex.mp4
 
-      - name: Upload NeonCubes
+      - name: Upload RadialHexRed
         uses: actions/upload-artifact@v4
         with:
-          name: NeonCubes-4K
-          path: output/NeonCubes.mp4
+          name: RadialHexRed-4K
+          path: output/RadialHexRed.mp4
 
-      - name: Upload MagmaCubes
+      - name: Upload RadialHexGreen
         uses: actions/upload-artifact@v4
         with:
-          name: MagmaCubes-4K
-          path: output/MagmaCubes.mp4
-
-      - name: Upload EmeraldHex
-        uses: actions/upload-artifact@v4
-        with:
-          name: EmeraldHex-4K
-          path: output/EmeraldHex.mp4
-
-      - name: Upload OceanHex
-        uses: actions/upload-artifact@v4
-        with:
-          name: OceanHex-4K
-          path: output/OceanHex.mp4
-
-      - name: Upload LavaHex
-        uses: actions/upload-artifact@v4
-        with:
-          name: LavaHex-4K
-          path: output/LavaHex.mp4
+          name: RadialHexGreen-4K
+          path: output/RadialHexGreen.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: Cubes-ProRes
+          name: RadialHex-ProRes
           path: |
-            output/PurpleCubes-prores.mov
-            output/NeonCubes-prores.mov
-            output/MagmaCubes-prores.mov
-            output/EmeraldHex-prores.mov
-            output/OceanHex-prores.mov
-            output/LavaHex-prores.mov
+            output/RadialHex-prores.mov
+            output/RadialHexRed-prores.mov
+            output/RadialHexGreen-prores.mov

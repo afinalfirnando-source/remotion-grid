@@ -10,3 +10,4 @@ export { HypnoSpiral } from './HypnoSpiral';
 export { default as TorusKnot } from './TorusKnot';
 export { PurpleCubes } from './PurpleCubes';
 export { HexCubes } from './HexCubes';
+export { RadialHex } from './RadialHex';

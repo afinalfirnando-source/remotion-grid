@@ -12,6 +12,7 @@ import { HypnoSpiral } from './components/HypnoSpiral';
 import TorusKnot from './components/TorusKnot';
 import { PurpleCubes } from './components/PurpleCubes';
 import { HexCubes } from './components/HexCubes';
+import { RadialHex } from './components/RadialHex';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -284,6 +285,36 @@ export const RemotionRoot: React.FC = () => {
         id="LavaHex"
         component={() => (
           <HexCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lava" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RadialHex"
+        component={() => (
+          <RadialHex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="blue" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RadialHexRed"
+        component={() => (
+          <RadialHex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="red" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="RadialHexGreen"
+        component={() => (
+          <RadialHex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="green" />
         )}
         durationInFrames={DURATION}
         fps={FPS}
