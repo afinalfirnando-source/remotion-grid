@@ -1,4 +1,4 @@
-name: Render TorusKnot
+name: Render 6 Cubes Videos
 
 on:
   workflow_dispatch:
@@ -24,26 +24,92 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render TorusKnot (ProRes)
-        run: npx remotion render src/index.tsx TorusKnot output/TorusKnot-prores.mov --codec prores --prores-profile hq
+      - name: Render PurpleCubes (ProRes)
+        run: npx remotion render src/index.tsx PurpleCubes output/PurpleCubes-prores.mov --codec prores --prores-profile hq
 
-      - name: Check ProRes size
+      - name: Render NeonCubes (ProRes)
+        run: npx remotion render src/index.tsx NeonCubes output/NeonCubes-prores.mov --codec prores --prores-profile hq
+
+      - name: Render MagmaCubes (ProRes)
+        run: npx remotion render src/index.tsx MagmaCubes output/MagmaCubes-prores.mov --codec prores --prores-profile hq
+
+      - name: Render EmeraldHex (ProRes)
+        run: npx remotion render src/index.tsx EmeraldHex output/EmeraldHex-prores.mov --codec prores --prores-profile hq
+
+      - name: Render OceanHex (ProRes)
+        run: npx remotion render src/index.tsx OceanHex output/OceanHex-prores.mov --codec prores --prores-profile hq
+
+      - name: Render LavaHex (ProRes)
+        run: npx remotion render src/index.tsx LavaHex output/LavaHex-prores.mov --codec prores --prores-profile hq
+
+      - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode TorusKnot to MP4
-        run: ffmpeg -y -i output/TorusKnot-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/TorusKnot.mp4
+      - name: Encode PurpleCubes to MP4
+        run: ffmpeg -y -i output/PurpleCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PurpleCubes.mp4
 
-      - name: Check final file size
+      - name: Encode NeonCubes to MP4
+        run: ffmpeg -y -i output/NeonCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/NeonCubes.mp4
+
+      - name: Encode MagmaCubes to MP4
+        run: ffmpeg -y -i output/MagmaCubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MagmaCubes.mp4
+
+      - name: Encode EmeraldHex to MP4
+        run: ffmpeg -y -i output/EmeraldHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/EmeraldHex.mp4
+
+      - name: Encode OceanHex to MP4
+        run: ffmpeg -y -i output/OceanHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/OceanHex.mp4
+
+      - name: Encode LavaHex to MP4
+        run: ffmpeg -y -i output/LavaHex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaHex.mp4
+
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload TorusKnot
+      - name: Upload PurpleCubes
         uses: actions/upload-artifact@v4
         with:
-          name: TorusKnot-4K
-          path: output/TorusKnot.mp4
+          name: PurpleCubes-4K
+          path: output/PurpleCubes.mp4
 
-      - name: Upload ProRes master
+      - name: Upload NeonCubes
         uses: actions/upload-artifact@v4
         with:
-          name: TorusKnot-ProRes
-          path: output/TorusKnot-prores.mov
+          name: NeonCubes-4K
+          path: output/NeonCubes.mp4
+
+      - name: Upload MagmaCubes
+        uses: actions/upload-artifact@v4
+        with:
+          name: MagmaCubes-4K
+          path: output/MagmaCubes.mp4
+
+      - name: Upload EmeraldHex
+        uses: actions/upload-artifact@v4
+        with:
+          name: EmeraldHex-4K
+          path: output/EmeraldHex.mp4
+
+      - name: Upload OceanHex
+        uses: actions/upload-artifact@v4
+        with:
+          name: OceanHex-4K
+          path: output/OceanHex.mp4
+
+      - name: Upload LavaHex
+        uses: actions/upload-artifact@v4
+        with:
+          name: LavaHex-4K
+          path: output/LavaHex.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cubes-ProRes
+          path: |
+            output/PurpleCubes-prores.mov
+            output/NeonCubes-prores.mov
+            output/MagmaCubes-prores.mov
+            output/EmeraldHex-prores.mov
+            output/OceanHex-prores.mov
+            output/LavaHex-prores.mov

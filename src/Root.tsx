@@ -10,6 +10,8 @@ import { HexagonalWave3D } from './components/HexagonalWave3D';
 import { BreathingMesh } from './components/BreathingMesh';
 import { HypnoSpiral } from './components/HypnoSpiral';
 import TorusKnot from './components/TorusKnot';
+import { PurpleCubes } from './components/PurpleCubes';
+import { HexCubes } from './components/HexCubes';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -222,6 +224,66 @@ export const RemotionRoot: React.FC = () => {
         id="TorusKnot"
         component={() => (
           <TorusKnot width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PurpleCubes"
+        component={() => (
+          <PurpleCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="purple" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="NeonCubes"
+        component={() => (
+          <PurpleCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MagmaCubes"
+        component={() => (
+          <PurpleCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="magma" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="EmeraldHex"
+        component={() => (
+          <HexCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="OceanHex"
+        component={() => (
+          <HexCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ocean" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaHex"
+        component={() => (
+          <HexCubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lava" />
         )}
         durationInFrames={DURATION}
         fps={FPS}
