@@ -15,6 +15,7 @@ import { HexCubes } from './components/HexCubes';
 import { RadialHex } from './components/RadialHex';
 import RetroWaves from './components/RetroWaves';
 import { TriMesh } from './components/TriMesh';
+import { FiberOptic } from './components/FiberOptic';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -377,6 +378,16 @@ export const RemotionRoot: React.FC = () => {
         id="TriMeshNeon"
         component={() => (
           <TriMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FiberOptic"
+        component={() => (
+          <FiberOptic width={3840} height={2160} totalFrames={DURATION} speed={1} />
         )}
         durationInFrames={DURATION}
         fps={FPS}

@@ -14,3 +14,4 @@ export { RadialHex } from './RadialHex';
 export { default as RetroWaves } from './RetroWaves';
 export { TriMesh } from './TriMesh';
 export type { TriMeshScheme } from './TriMesh';
+export { FiberOptic } from './FiberOptic';
