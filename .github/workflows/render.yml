@@ -1,4 +1,4 @@
-name: Render RetroWaves (3 colors)
+name: Render TriMesh (3 colors)
 
 on:
   workflow_dispatch:
@@ -24,53 +24,53 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render RetroWaves Classic (ProRes)
-        run: npx remotion render src/index.tsx RetroWaves output/RetroWaves-prores.mov --codec prores --prores-profile hq
+      - name: Render TriMeshOcean (ProRes)
+        run: npx remotion render src/index.tsx TriMeshOcean output/TriMeshOcean-prores.mov --codec prores --prores-profile hq
 
-      - name: Render RetroWaves Candy (ProRes)
-        run: npx remotion render src/index.tsx RetroWavesCandy output/RetroWavesCandy-prores.mov --codec prores --prores-profile hq
+      - name: Render TriMeshSunset (ProRes)
+        run: npx remotion render src/index.tsx TriMeshSunset output/TriMeshSunset-prores.mov --codec prores --prores-profile hq
 
-      - name: Render RetroWaves Miami (ProRes)
-        run: npx remotion render src/index.tsx RetroWavesMiami output/RetroWavesMiami-prores.mov --codec prores --prores-profile hq
+      - name: Render TriMeshNeon (ProRes)
+        run: npx remotion render src/index.tsx TriMeshNeon output/TriMeshNeon-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode RetroWaves Classic to MP4
-        run: ffmpeg -y -i output/RetroWaves-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWaves.mp4
+      - name: Encode TriMeshOcean to MP4
+        run: ffmpeg -y -i output/TriMeshOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/TriMeshOcean.mp4
 
-      - name: Encode RetroWaves Candy to MP4
-        run: ffmpeg -y -i output/RetroWavesCandy-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWavesCandy.mp4
+      - name: Encode TriMeshSunset to MP4
+        run: ffmpeg -y -i output/TriMeshSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/TriMeshSunset.mp4
 
-      - name: Encode RetroWaves Miami to MP4
-        run: ffmpeg -y -i output/RetroWavesMiami-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/RetroWavesMiami.mp4
+      - name: Encode TriMeshNeon to MP4
+        run: ffmpeg -y -i output/TriMeshNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/TriMeshNeon.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload RetroWaves Classic
+      - name: Upload TriMeshOcean
         uses: actions/upload-artifact@v4
         with:
-          name: RetroWaves-Classic-4K
-          path: output/RetroWaves.mp4
+          name: TriMeshOcean-4K
+          path: output/TriMeshOcean.mp4
 
-      - name: Upload RetroWaves Candy
+      - name: Upload TriMeshSunset
         uses: actions/upload-artifact@v4
         with:
-          name: RetroWaves-Candy-4K
-          path: output/RetroWavesCandy.mp4
+          name: TriMeshSunset-4K
+          path: output/TriMeshSunset.mp4
 
-      - name: Upload RetroWaves Miami
+      - name: Upload TriMeshNeon
         uses: actions/upload-artifact@v4
         with:
-          name: RetroWaves-Miami-4K
-          path: output/RetroWavesMiami.mp4
+          name: TriMeshNeon-4K
+          path: output/TriMeshNeon.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: RetroWaves-ProRes
+          name: TriMesh-ProRes
           path: |
-            output/RetroWaves-prores.mov
-            output/RetroWavesCandy-prores.mov
-            output/RetroWavesMiami-prores.mov
+            output/TriMeshOcean-prores.mov
+            output/TriMeshSunset-prores.mov
+            output/TriMeshNeon-prores.mov

@@ -12,3 +12,5 @@ export { PurpleCubes } from './PurpleCubes';
 export { HexCubes } from './HexCubes';
 export { RadialHex } from './RadialHex';
 export { default as RetroWaves } from './RetroWaves';
+export { TriMesh } from './TriMesh';
+export type { TriMeshScheme } from './TriMesh';

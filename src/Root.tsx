@@ -14,10 +14,11 @@ import { PurpleCubes } from './components/PurpleCubes';
 import { HexCubes } from './components/HexCubes';
 import { RadialHex } from './components/RadialHex';
 import RetroWaves from './components/RetroWaves';
+import { TriMesh } from './components/TriMesh';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
-const DURATION = FPS * 10;
+const DURATION = FPS * 15;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -346,6 +347,36 @@ export const RemotionRoot: React.FC = () => {
         id="RetroWavesMiami"
         component={() => (
           <RetroWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="miami" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="TriMeshOcean"
+        component={() => (
+          <TriMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ocean" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="TriMeshSunset"
+        component={() => (
+          <TriMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunset" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="TriMeshNeon"
+        component={() => (
+          <TriMesh width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
         )}
         durationInFrames={DURATION}
         fps={FPS}
