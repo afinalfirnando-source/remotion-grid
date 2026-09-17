@@ -19,6 +19,8 @@ import { FiberOptic } from './components/FiberOptic';
 import { WaveSpectrum } from './components/WaveSpectrum';
 import { SilkWaves } from './components/SilkWaves';
 import type { SilkWavesScheme } from './components/SilkWaves';
+import { Inferno } from './components/Inferno';
+import type { InfernoScheme } from './components/Inferno';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -441,6 +443,56 @@ export const RemotionRoot: React.FC = () => {
         id="SilkWavesOcean"
         component={() => (
           <SilkWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ocean" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="Inferno"
+        component={() => (
+          <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="inferno" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="InfernoBlueFire"
+        component={() => (
+          <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="bluefire" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="InfernoToxic"
+        component={() => (
+          <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="toxic" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="InfernoVoid"
+        component={() => (
+          <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="void" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="InfernoSolar"
+        component={() => (
+          <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="solar" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

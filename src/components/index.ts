@@ -18,3 +18,5 @@ export { FiberOptic } from './FiberOptic';
 export { WaveSpectrum } from './WaveSpectrum';
 export { SilkWaves } from './SilkWaves';
 export type { SilkWavesScheme } from './SilkWaves';
+export { Inferno } from './Inferno';
+export type { InfernoScheme } from './Inferno';

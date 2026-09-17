@@ -1,4 +1,4 @@
-name: Render SilkWaves (4 colors)
+name: Render Inferno (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,66 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render SilkWavesRainbow (ProRes)
-        run: npx remotion render src/index.tsx SilkWavesRainbow output/SilkWavesRainbow-prores.mov --codec prores --prores-profile hq
+      - name: Render Inferno (ProRes)
+        run: npx remotion render src/index.tsx Inferno output/Inferno-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkWavesAurora (ProRes)
-        run: npx remotion render src/index.tsx SilkWavesAurora output/SilkWavesAurora-prores.mov --codec prores --prores-profile hq
+      - name: Render InfernoBlueFire (ProRes)
+        run: npx remotion render src/index.tsx InfernoBlueFire output/InfernoBlueFire-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkWavesFire (ProRes)
-        run: npx remotion render src/index.tsx SilkWavesFire output/SilkWavesFire-prores.mov --codec prores --prores-profile hq
+      - name: Render InfernoToxic (ProRes)
+        run: npx remotion render src/index.tsx InfernoToxic output/InfernoToxic-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkWavesOcean (ProRes)
-        run: npx remotion render src/index.tsx SilkWavesOcean output/SilkWavesOcean-prores.mov --codec prores --prores-profile hq
+      - name: Render InfernoVoid (ProRes)
+        run: npx remotion render src/index.tsx InfernoVoid output/InfernoVoid-prores.mov --codec prores --prores-profile hq
+
+      - name: Render InfernoSolar (ProRes)
+        run: npx remotion render src/index.tsx InfernoSolar output/InfernoSolar-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode SilkWavesRainbow to MP4
-        run: ffmpeg -y -i output/SilkWavesRainbow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesRainbow.mp4
+      - name: Encode Inferno to MP4
+        run: ffmpeg -y -i output/Inferno-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/Inferno.mp4
 
-      - name: Encode SilkWavesAurora to MP4
-        run: ffmpeg -y -i output/SilkWavesAurora-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesAurora.mp4
+      - name: Encode InfernoBlueFire to MP4
+        run: ffmpeg -y -i output/InfernoBlueFire-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoBlueFire.mp4
 
-      - name: Encode SilkWavesFire to MP4
-        run: ffmpeg -y -i output/SilkWavesFire-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesFire.mp4
+      - name: Encode InfernoToxic to MP4
+        run: ffmpeg -y -i output/InfernoToxic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoToxic.mp4
 
-      - name: Encode SilkWavesOcean to MP4
-        run: ffmpeg -y -i output/SilkWavesOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesOcean.mp4
+      - name: Encode InfernoVoid to MP4
+        run: ffmpeg -y -i output/InfernoVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoVoid.mp4
+
+      - name: Encode InfernoSolar to MP4
+        run: ffmpeg -y -i output/InfernoSolar-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoSolar.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload SilkWavesRainbow
+      - name: Upload Inferno
         uses: actions/upload-artifact@v4
         with:
-          name: SilkWavesRainbow-4K
-          path: output/SilkWavesRainbow.mp4
+          name: Inferno-4K
+          path: output/Inferno.mp4
 
-      - name: Upload SilkWavesAurora
+      - name: Upload InfernoBlueFire
         uses: actions/upload-artifact@v4
         with:
-          name: SilkWavesAurora-4K
-          path: output/SilkWavesAurora.mp4
+          name: InfernoBlueFire-4K
+          path: output/InfernoBlueFire.mp4
 
-      - name: Upload SilkWavesFire
+      - name: Upload InfernoToxic
         uses: actions/upload-artifact@v4
         with:
-          name: SilkWavesFire-4K
-          path: output/SilkWavesFire.mp4
+          name: InfernoToxic-4K
+          path: output/InfernoToxic.mp4
 
-      - name: Upload SilkWavesOcean
+      - name: Upload InfernoVoid
         uses: actions/upload-artifact@v4
         with:
-          name: SilkWavesOcean-4K
-          path: output/SilkWavesOcean.mp4
+          name: InfernoVoid-4K
+          path: output/InfernoVoid.mp4
+
+      - name: Upload InfernoSolar
+        uses: actions/upload-artifact@v4
+        with:
+          name: InfernoSolar-4K
+          path: output/InfernoSolar.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: SilkWaves-ProRes
+          name: Inferno-ProRes
           path: |
-            output/SilkWavesRainbow-prores.mov
-            output/SilkWavesAurora-prores.mov
-            output/SilkWavesFire-prores.mov
-            output/SilkWavesOcean-prores.mov
+            output/Inferno-prores.mov
+            output/InfernoBlueFire-prores.mov
+            output/InfernoToxic-prores.mov
+            output/InfernoVoid-prores.mov
+            output/InfernoSolar-prores.mov
