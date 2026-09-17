@@ -16,6 +16,9 @@ import { RadialHex } from './components/RadialHex';
 import RetroWaves from './components/RetroWaves';
 import { TriMesh } from './components/TriMesh';
 import { FiberOptic } from './components/FiberOptic';
+import { WaveSpectrum } from './components/WaveSpectrum';
+import { SilkWaves } from './components/SilkWaves';
+import type { SilkWavesScheme } from './components/SilkWaves';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -388,6 +391,56 @@ export const RemotionRoot: React.FC = () => {
         id="FiberOptic"
         component={() => (
           <FiberOptic width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WaveSpectrum"
+        component={() => (
+          <WaveSpectrum width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkWavesRainbow"
+        component={() => (
+          <SilkWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="rainbow" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkWavesAurora"
+        component={() => (
+          <SilkWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="aurora" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkWavesFire"
+        component={() => (
+          <SilkWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="fire" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkWavesOcean"
+        component={() => (
+          <SilkWaves width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ocean" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

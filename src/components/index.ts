@@ -15,3 +15,6 @@ export { default as RetroWaves } from './RetroWaves';
 export { TriMesh } from './TriMesh';
 export type { TriMeshScheme } from './TriMesh';
 export { FiberOptic } from './FiberOptic';
+export { WaveSpectrum } from './WaveSpectrum';
+export { SilkWaves } from './SilkWaves';
+export type { SilkWavesScheme } from './SilkWaves';

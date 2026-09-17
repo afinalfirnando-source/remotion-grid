@@ -1,4 +1,4 @@
-name: Render FiberOptic
+name: Render SilkWaves (4 colors)
 
 on:
   workflow_dispatch:
@@ -24,26 +24,66 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render FiberOptic (ProRes)
-        run: npx remotion render src/index.tsx FiberOptic output/FiberOptic-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkWavesRainbow (ProRes)
+        run: npx remotion render src/index.tsx SilkWavesRainbow output/SilkWavesRainbow-prores.mov --codec prores --prores-profile hq
 
-      - name: Check ProRes size
+      - name: Render SilkWavesAurora (ProRes)
+        run: npx remotion render src/index.tsx SilkWavesAurora output/SilkWavesAurora-prores.mov --codec prores --prores-profile hq
+
+      - name: Render SilkWavesFire (ProRes)
+        run: npx remotion render src/index.tsx SilkWavesFire output/SilkWavesFire-prores.mov --codec prores --prores-profile hq
+
+      - name: Render SilkWavesOcean (ProRes)
+        run: npx remotion render src/index.tsx SilkWavesOcean output/SilkWavesOcean-prores.mov --codec prores --prores-profile hq
+
+      - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode FiberOptic to MP4
-        run: ffmpeg -y -i output/FiberOptic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FiberOptic.mp4
+      - name: Encode SilkWavesRainbow to MP4
+        run: ffmpeg -y -i output/SilkWavesRainbow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesRainbow.mp4
 
-      - name: Check final file size
+      - name: Encode SilkWavesAurora to MP4
+        run: ffmpeg -y -i output/SilkWavesAurora-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesAurora.mp4
+
+      - name: Encode SilkWavesFire to MP4
+        run: ffmpeg -y -i output/SilkWavesFire-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesFire.mp4
+
+      - name: Encode SilkWavesOcean to MP4
+        run: ffmpeg -y -i output/SilkWavesOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkWavesOcean.mp4
+
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload FiberOptic
+      - name: Upload SilkWavesRainbow
         uses: actions/upload-artifact@v4
         with:
-          name: FiberOptic-4K
-          path: output/FiberOptic.mp4
+          name: SilkWavesRainbow-4K
+          path: output/SilkWavesRainbow.mp4
 
-      - name: Upload ProRes master
+      - name: Upload SilkWavesAurora
         uses: actions/upload-artifact@v4
         with:
-          name: FiberOptic-ProRes
-          path: output/FiberOptic-prores.mov
+          name: SilkWavesAurora-4K
+          path: output/SilkWavesAurora.mp4
+
+      - name: Upload SilkWavesFire
+        uses: actions/upload-artifact@v4
+        with:
+          name: SilkWavesFire-4K
+          path: output/SilkWavesFire.mp4
+
+      - name: Upload SilkWavesOcean
+        uses: actions/upload-artifact@v4
+        with:
+          name: SilkWavesOcean-4K
+          path: output/SilkWavesOcean.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: SilkWaves-ProRes
+          path: |
+            output/SilkWavesRainbow-prores.mov
+            output/SilkWavesAurora-prores.mov
+            output/SilkWavesFire-prores.mov
+            output/SilkWavesOcean-prores.mov
