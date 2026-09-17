@@ -26,6 +26,8 @@ import type { AuroraFlowScheme } from './components/AuroraFlow';
 import { GlitterFlow } from './components/GlitterFlow';
 import { LiquidChrome } from './components/LiquidChrome';
 import type { LiquidChromeScheme } from './components/LiquidChrome';
+import { LavaVeins } from './components/LavaVeins';
+import type { LavaVeinsScheme } from './components/LavaVeins';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -608,6 +610,56 @@ export const RemotionRoot: React.FC = () => {
         id="LiquidChromeObsidian"
         component={() => (
           <LiquidChrome width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="obsidian" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaVeins"
+        component={() => (
+          <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lava" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaVeinsIce"
+        component={() => (
+          <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ice" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaVeinsToxic"
+        component={() => (
+          <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="toxic" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaVeinsVoid"
+        component={() => (
+          <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="void" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="LavaVeinsSolar"
+        component={() => (
+          <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="solar" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

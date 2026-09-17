@@ -1,4 +1,4 @@
-name: Render LiquidChrome (5 colors)
+name: Render LavaVeins (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render LiquidChrome (ProRes)
-        run: npx remotion render src/index.tsx LiquidChrome output/LiquidChrome-prores.mov --codec prores --prores-profile hq
+      - name: Render LavaVeins (ProRes)
+        run: npx remotion render src/index.tsx LavaVeins output/LavaVeins-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LiquidChromeGold (ProRes)
-        run: npx remotion render src/index.tsx LiquidChromeGold output/LiquidChromeGold-prores.mov --codec prores --prores-profile hq
+      - name: Render LavaVeinsIce (ProRes)
+        run: npx remotion render src/index.tsx LavaVeinsIce output/LavaVeinsIce-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LiquidChromeRose (ProRes)
-        run: npx remotion render src/index.tsx LiquidChromeRose output/LiquidChromeRose-prores.mov --codec prores --prores-profile hq
+      - name: Render LavaVeinsToxic (ProRes)
+        run: npx remotion render src/index.tsx LavaVeinsToxic output/LavaVeinsToxic-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LiquidChromeEmerald (ProRes)
-        run: npx remotion render src/index.tsx LiquidChromeEmerald output/LiquidChromeEmerald-prores.mov --codec prores --prores-profile hq
+      - name: Render LavaVeinsVoid (ProRes)
+        run: npx remotion render src/index.tsx LavaVeinsVoid output/LavaVeinsVoid-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LiquidChromeObsidian (ProRes)
-        run: npx remotion render src/index.tsx LiquidChromeObsidian output/LiquidChromeObsidian-prores.mov --codec prores --prores-profile hq
+      - name: Render LavaVeinsSolar (ProRes)
+        run: npx remotion render src/index.tsx LavaVeinsSolar output/LavaVeinsSolar-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode LiquidChrome to MP4
-        run: ffmpeg -y -i output/LiquidChrome-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChrome.mp4
+      - name: Encode LavaVeins to MP4
+        run: ffmpeg -y -i output/LavaVeins-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeins.mp4
 
-      - name: Encode LiquidChromeGold to MP4
-        run: ffmpeg -y -i output/LiquidChromeGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeGold.mp4
+      - name: Encode LavaVeinsIce to MP4
+        run: ffmpeg -y -i output/LavaVeinsIce-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsIce.mp4
 
-      - name: Encode LiquidChromeRose to MP4
-        run: ffmpeg -y -i output/LiquidChromeRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeRose.mp4
+      - name: Encode LavaVeinsToxic to MP4
+        run: ffmpeg -y -i output/LavaVeinsToxic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsToxic.mp4
 
-      - name: Encode LiquidChromeEmerald to MP4
-        run: ffmpeg -y -i output/LiquidChromeEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeEmerald.mp4
+      - name: Encode LavaVeinsVoid to MP4
+        run: ffmpeg -y -i output/LavaVeinsVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsVoid.mp4
 
-      - name: Encode LiquidChromeObsidian to MP4
-        run: ffmpeg -y -i output/LiquidChromeObsidian-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeObsidian.mp4
+      - name: Encode LavaVeinsSolar to MP4
+        run: ffmpeg -y -i output/LavaVeinsSolar-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsSolar.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload LiquidChrome
+      - name: Upload LavaVeins
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChrome-4K
-          path: output/LiquidChrome.mp4
+          name: LavaVeins-4K
+          path: output/LavaVeins.mp4
 
-      - name: Upload LiquidChromeGold
+      - name: Upload LavaVeinsIce
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChromeGold-4K
-          path: output/LiquidChromeGold.mp4
+          name: LavaVeinsIce-4K
+          path: output/LavaVeinsIce.mp4
 
-      - name: Upload LiquidChromeRose
+      - name: Upload LavaVeinsToxic
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChromeRose-4K
-          path: output/LiquidChromeRose.mp4
+          name: LavaVeinsToxic-4K
+          path: output/LavaVeinsToxic.mp4
 
-      - name: Upload LiquidChromeEmerald
+      - name: Upload LavaVeinsVoid
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChromeEmerald-4K
-          path: output/LiquidChromeEmerald.mp4
+          name: LavaVeinsVoid-4K
+          path: output/LavaVeinsVoid.mp4
 
-      - name: Upload LiquidChromeObsidian
+      - name: Upload LavaVeinsSolar
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChromeObsidian-4K
-          path: output/LiquidChromeObsidian.mp4
+          name: LavaVeinsSolar-4K
+          path: output/LavaVeinsSolar.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: LiquidChrome-ProRes
+          name: LavaVeins-ProRes
           path: |
-            output/LiquidChrome-prores.mov
-            output/LiquidChromeGold-prores.mov
-            output/LiquidChromeRose-prores.mov
-            output/LiquidChromeEmerald-prores.mov
-            output/LiquidChromeObsidian-prores.mov
+            output/LavaVeins-prores.mov
+            output/LavaVeinsIce-prores.mov
+            output/LavaVeinsToxic-prores.mov
+            output/LavaVeinsVoid-prores.mov
+            output/LavaVeinsSolar-prores.mov

@@ -25,3 +25,5 @@ export type { AuroraFlowScheme } from './AuroraFlow';
 export { GlitterFlow } from './GlitterFlow';
 export { LiquidChrome } from './LiquidChrome';
 export type { LiquidChromeScheme } from './LiquidChrome';
+export { LavaVeins } from './LavaVeins';
+export type { LavaVeinsScheme } from './LavaVeins';
