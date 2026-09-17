@@ -1,4 +1,4 @@
-name: Render LavaVeins (5 colors)
+name: Render MarbleFlow (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render LavaVeins (ProRes)
-        run: npx remotion render src/index.tsx LavaVeins output/LavaVeins-prores.mov --codec prores --prores-profile hq
+      - name: Render MarbleFlow (ProRes)
+        run: npx remotion render src/index.tsx MarbleFlow output/MarbleFlow-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LavaVeinsIce (ProRes)
-        run: npx remotion render src/index.tsx LavaVeinsIce output/LavaVeinsIce-prores.mov --codec prores --prores-profile hq
+      - name: Render MarbleFlowNoir (ProRes)
+        run: npx remotion render src/index.tsx MarbleFlowNoir output/MarbleFlowNoir-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LavaVeinsToxic (ProRes)
-        run: npx remotion render src/index.tsx LavaVeinsToxic output/LavaVeinsToxic-prores.mov --codec prores --prores-profile hq
+      - name: Render MarbleFlowRosa (ProRes)
+        run: npx remotion render src/index.tsx MarbleFlowRosa output/MarbleFlowRosa-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LavaVeinsVoid (ProRes)
-        run: npx remotion render src/index.tsx LavaVeinsVoid output/LavaVeinsVoid-prores.mov --codec prores --prores-profile hq
+      - name: Render MarbleFlowVerde (ProRes)
+        run: npx remotion render src/index.tsx MarbleFlowVerde output/MarbleFlowVerde-prores.mov --codec prores --prores-profile hq
 
-      - name: Render LavaVeinsSolar (ProRes)
-        run: npx remotion render src/index.tsx LavaVeinsSolar output/LavaVeinsSolar-prores.mov --codec prores --prores-profile hq
+      - name: Render MarbleFlowRoyal (ProRes)
+        run: npx remotion render src/index.tsx MarbleFlowRoyal output/MarbleFlowRoyal-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode LavaVeins to MP4
-        run: ffmpeg -y -i output/LavaVeins-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeins.mp4
+      - name: Encode MarbleFlow to MP4
+        run: ffmpeg -y -i output/MarbleFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlow.mp4
 
-      - name: Encode LavaVeinsIce to MP4
-        run: ffmpeg -y -i output/LavaVeinsIce-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsIce.mp4
+      - name: Encode MarbleFlowNoir to MP4
+        run: ffmpeg -y -i output/MarbleFlowNoir-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowNoir.mp4
 
-      - name: Encode LavaVeinsToxic to MP4
-        run: ffmpeg -y -i output/LavaVeinsToxic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsToxic.mp4
+      - name: Encode MarbleFlowRosa to MP4
+        run: ffmpeg -y -i output/MarbleFlowRosa-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowRosa.mp4
 
-      - name: Encode LavaVeinsVoid to MP4
-        run: ffmpeg -y -i output/LavaVeinsVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsVoid.mp4
+      - name: Encode MarbleFlowVerde to MP4
+        run: ffmpeg -y -i output/MarbleFlowVerde-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowVerde.mp4
 
-      - name: Encode LavaVeinsSolar to MP4
-        run: ffmpeg -y -i output/LavaVeinsSolar-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LavaVeinsSolar.mp4
+      - name: Encode MarbleFlowRoyal to MP4
+        run: ffmpeg -y -i output/MarbleFlowRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowRoyal.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload LavaVeins
+      - name: Upload MarbleFlow
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeins-4K
-          path: output/LavaVeins.mp4
+          name: MarbleFlow-4K
+          path: output/MarbleFlow.mp4
 
-      - name: Upload LavaVeinsIce
+      - name: Upload MarbleFlowNoir
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeinsIce-4K
-          path: output/LavaVeinsIce.mp4
+          name: MarbleFlowNoir-4K
+          path: output/MarbleFlowNoir.mp4
 
-      - name: Upload LavaVeinsToxic
+      - name: Upload MarbleFlowRosa
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeinsToxic-4K
-          path: output/LavaVeinsToxic.mp4
+          name: MarbleFlowRosa-4K
+          path: output/MarbleFlowRosa.mp4
 
-      - name: Upload LavaVeinsVoid
+      - name: Upload MarbleFlowVerde
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeinsVoid-4K
-          path: output/LavaVeinsVoid.mp4
+          name: MarbleFlowVerde-4K
+          path: output/MarbleFlowVerde.mp4
 
-      - name: Upload LavaVeinsSolar
+      - name: Upload MarbleFlowRoyal
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeinsSolar-4K
-          path: output/LavaVeinsSolar.mp4
+          name: MarbleFlowRoyal-4K
+          path: output/MarbleFlowRoyal.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: LavaVeins-ProRes
+          name: MarbleFlow-ProRes
           path: |
-            output/LavaVeins-prores.mov
-            output/LavaVeinsIce-prores.mov
-            output/LavaVeinsToxic-prores.mov
-            output/LavaVeinsVoid-prores.mov
-            output/LavaVeinsSolar-prores.mov
+            output/MarbleFlow-prores.mov
+            output/MarbleFlowNoir-prores.mov
+            output/MarbleFlowRosa-prores.mov
+            output/MarbleFlowVerde-prores.mov
+            output/MarbleFlowRoyal-prores.mov

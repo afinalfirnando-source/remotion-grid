@@ -28,6 +28,8 @@ import { LiquidChrome } from './components/LiquidChrome';
 import type { LiquidChromeScheme } from './components/LiquidChrome';
 import { LavaVeins } from './components/LavaVeins';
 import type { LavaVeinsScheme } from './components/LavaVeins';
+import { MarbleFlow } from './components/MarbleFlow';
+import type { MarbleScheme } from './components/MarbleFlow';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -660,6 +662,56 @@ export const RemotionRoot: React.FC = () => {
         id="LavaVeinsSolar"
         component={() => (
           <LavaVeins width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="solar" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MarbleFlow"
+        component={() => (
+          <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="classic" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MarbleFlowNoir"
+        component={() => (
+          <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="noir" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MarbleFlowRosa"
+        component={() => (
+          <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="rosa" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MarbleFlowVerde"
+        component={() => (
+          <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="verde" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MarbleFlowRoyal"
+        component={() => (
+          <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

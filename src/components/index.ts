@@ -27,3 +27,5 @@ export { LiquidChrome } from './LiquidChrome';
 export type { LiquidChromeScheme } from './LiquidChrome';
 export { LavaVeins } from './LavaVeins';
 export type { LavaVeinsScheme } from './LavaVeins';
+export { MarbleFlow } from './MarbleFlow';
+export type { MarbleScheme } from './MarbleFlow';

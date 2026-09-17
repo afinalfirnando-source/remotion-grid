@@ -44,8 +44,8 @@ function fbm(x: number, y: number, oct: number): number {
 function warpedNoise(x: number, y: number, t: number): number {
   const qx = fbm(x, y, 3);
   const qy = fbm(x + 5.2, y + 1.3, 3);
-  const rx = fbm(x + 4 * qx + 1.7 + t * 0.25, y + 4 * qy + 9.2, 3);
-  const ry = fbm(x + 4 * rx + 8.3 + t * 0.2, y + 4 * qx + 2.8, 3);
+  const rx = fbm(x + 4 * qx + 1.7 + t, y + 4 * qy + 9.2, 3);
+  const ry = fbm(x + 4 * rx + 8.3 + t, y + 4 * qx + 2.8, 3);
   return fbm(x + 4 * rx, y + 4 * ry, 4);
 }
 
