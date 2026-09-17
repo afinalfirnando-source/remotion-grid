@@ -1,4 +1,4 @@
-name: Render Inferno (5 colors)
+name: Render AuroraFlow (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render Inferno (ProRes)
-        run: npx remotion render src/index.tsx Inferno output/Inferno-prores.mov --codec prores --prores-profile hq
+      - name: Render AuroraFlow (ProRes)
+        run: npx remotion render src/index.tsx AuroraFlow output/AuroraFlow-prores.mov --codec prores --prores-profile hq
 
-      - name: Render InfernoBlueFire (ProRes)
-        run: npx remotion render src/index.tsx InfernoBlueFire output/InfernoBlueFire-prores.mov --codec prores --prores-profile hq
+      - name: Render AuroraFlowSunset (ProRes)
+        run: npx remotion render src/index.tsx AuroraFlowSunset output/AuroraFlowSunset-prores.mov --codec prores --prores-profile hq
 
-      - name: Render InfernoToxic (ProRes)
-        run: npx remotion render src/index.tsx InfernoToxic output/InfernoToxic-prores.mov --codec prores --prores-profile hq
+      - name: Render AuroraFlowArctic (ProRes)
+        run: npx remotion render src/index.tsx AuroraFlowArctic output/AuroraFlowArctic-prores.mov --codec prores --prores-profile hq
 
-      - name: Render InfernoVoid (ProRes)
-        run: npx remotion render src/index.tsx InfernoVoid output/InfernoVoid-prores.mov --codec prores --prores-profile hq
+      - name: Render AuroraFlowForest (ProRes)
+        run: npx remotion render src/index.tsx AuroraFlowForest output/AuroraFlowForest-prores.mov --codec prores --prores-profile hq
 
-      - name: Render InfernoSolar (ProRes)
-        run: npx remotion render src/index.tsx InfernoSolar output/InfernoSolar-prores.mov --codec prores --prores-profile hq
+      - name: Render AuroraFlowGolden (ProRes)
+        run: npx remotion render src/index.tsx AuroraFlowGolden output/AuroraFlowGolden-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode Inferno to MP4
-        run: ffmpeg -y -i output/Inferno-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/Inferno.mp4
+      - name: Encode AuroraFlow to MP4
+        run: ffmpeg -y -i output/AuroraFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlow.mp4
 
-      - name: Encode InfernoBlueFire to MP4
-        run: ffmpeg -y -i output/InfernoBlueFire-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoBlueFire.mp4
+      - name: Encode AuroraFlowSunset to MP4
+        run: ffmpeg -y -i output/AuroraFlowSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowSunset.mp4
 
-      - name: Encode InfernoToxic to MP4
-        run: ffmpeg -y -i output/InfernoToxic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoToxic.mp4
+      - name: Encode AuroraFlowArctic to MP4
+        run: ffmpeg -y -i output/AuroraFlowArctic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowArctic.mp4
 
-      - name: Encode InfernoVoid to MP4
-        run: ffmpeg -y -i output/InfernoVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoVoid.mp4
+      - name: Encode AuroraFlowForest to MP4
+        run: ffmpeg -y -i output/AuroraFlowForest-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowForest.mp4
 
-      - name: Encode InfernoSolar to MP4
-        run: ffmpeg -y -i output/InfernoSolar-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/InfernoSolar.mp4
+      - name: Encode AuroraFlowGolden to MP4
+        run: ffmpeg -y -i output/AuroraFlowGolden-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowGolden.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload Inferno
+      - name: Upload AuroraFlow
         uses: actions/upload-artifact@v4
         with:
-          name: Inferno-4K
-          path: output/Inferno.mp4
+          name: AuroraFlow-4K
+          path: output/AuroraFlow.mp4
 
-      - name: Upload InfernoBlueFire
+      - name: Upload AuroraFlowSunset
         uses: actions/upload-artifact@v4
         with:
-          name: InfernoBlueFire-4K
-          path: output/InfernoBlueFire.mp4
+          name: AuroraFlowSunset-4K
+          path: output/AuroraFlowSunset.mp4
 
-      - name: Upload InfernoToxic
+      - name: Upload AuroraFlowArctic
         uses: actions/upload-artifact@v4
         with:
-          name: InfernoToxic-4K
-          path: output/InfernoToxic.mp4
+          name: AuroraFlowArctic-4K
+          path: output/AuroraFlowArctic.mp4
 
-      - name: Upload InfernoVoid
+      - name: Upload AuroraFlowForest
         uses: actions/upload-artifact@v4
         with:
-          name: InfernoVoid-4K
-          path: output/InfernoVoid.mp4
+          name: AuroraFlowForest-4K
+          path: output/AuroraFlowForest.mp4
 
-      - name: Upload InfernoSolar
+      - name: Upload AuroraFlowGolden
         uses: actions/upload-artifact@v4
         with:
-          name: InfernoSolar-4K
-          path: output/InfernoSolar.mp4
+          name: AuroraFlowGolden-4K
+          path: output/AuroraFlowGolden.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: Inferno-ProRes
+          name: AuroraFlow-ProRes
           path: |
-            output/Inferno-prores.mov
-            output/InfernoBlueFire-prores.mov
-            output/InfernoToxic-prores.mov
-            output/InfernoVoid-prores.mov
-            output/InfernoSolar-prores.mov
+            output/AuroraFlow-prores.mov
+            output/AuroraFlowSunset-prores.mov
+            output/AuroraFlowArctic-prores.mov
+            output/AuroraFlowForest-prores.mov
+            output/AuroraFlowGolden-prores.mov

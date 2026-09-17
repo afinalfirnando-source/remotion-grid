@@ -21,6 +21,8 @@ import { SilkWaves } from './components/SilkWaves';
 import type { SilkWavesScheme } from './components/SilkWaves';
 import { Inferno } from './components/Inferno';
 import type { InfernoScheme } from './components/Inferno';
+import { AuroraFlow } from './components/AuroraFlow';
+import type { AuroraFlowScheme } from './components/AuroraFlow';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -493,6 +495,56 @@ export const RemotionRoot: React.FC = () => {
         id="InfernoSolar"
         component={() => (
           <Inferno width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="solar" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraFlow"
+        component={() => (
+          <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraFlowSunset"
+        component={() => (
+          <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunset" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraFlowArctic"
+        component={() => (
+          <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="arctic" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraFlowForest"
+        component={() => (
+          <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="forest" />
+        )}
+        durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="AuroraFlowGolden"
+        component={() => (
+          <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="golden" />
         )}
         durationInFrames={DURATION}
         fps={FPS}

@@ -20,3 +20,5 @@ export { SilkWaves } from './SilkWaves';
 export type { SilkWavesScheme } from './SilkWaves';
 export { Inferno } from './Inferno';
 export type { InfernoScheme } from './Inferno';
+export { AuroraFlow } from './AuroraFlow';
+export type { AuroraFlowScheme } from './AuroraFlow';
