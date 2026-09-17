@@ -23,6 +23,7 @@ import { Inferno } from './components/Inferno';
 import type { InfernoScheme } from './components/Inferno';
 import { AuroraFlow } from './components/AuroraFlow';
 import type { AuroraFlowScheme } from './components/AuroraFlow';
+import { GlitterFlow } from './components/GlitterFlow';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -547,6 +548,16 @@ export const RemotionRoot: React.FC = () => {
           <AuroraFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="golden" />
         )}
         durationInFrames={DURATION}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="GlitterFlow"
+        component={() => (
+          <GlitterFlow width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION + 1}
         fps={FPS}
         width={3840}
         height={2160}

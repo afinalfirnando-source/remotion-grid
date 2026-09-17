@@ -1,4 +1,4 @@
-name: Render AuroraFlow (5 colors)
+name: Render GlitterFlow
 
 on:
   workflow_dispatch:
@@ -24,79 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render AuroraFlow (ProRes)
-        run: npx remotion render src/index.tsx AuroraFlow output/AuroraFlow-prores.mov --codec prores --prores-profile hq
+      - name: Render GlitterFlow (ProRes)
+        run: npx remotion render src/index.tsx GlitterFlow output/GlitterFlow-prores.mov --codec prores --prores-profile hq
 
-      - name: Render AuroraFlowSunset (ProRes)
-        run: npx remotion render src/index.tsx AuroraFlowSunset output/AuroraFlowSunset-prores.mov --codec prores --prores-profile hq
-
-      - name: Render AuroraFlowArctic (ProRes)
-        run: npx remotion render src/index.tsx AuroraFlowArctic output/AuroraFlowArctic-prores.mov --codec prores --prores-profile hq
-
-      - name: Render AuroraFlowForest (ProRes)
-        run: npx remotion render src/index.tsx AuroraFlowForest output/AuroraFlowForest-prores.mov --codec prores --prores-profile hq
-
-      - name: Render AuroraFlowGolden (ProRes)
-        run: npx remotion render src/index.tsx AuroraFlowGolden output/AuroraFlowGolden-prores.mov --codec prores --prores-profile hq
-
-      - name: Check ProRes sizes
+      - name: Check ProRes size
         run: ls -lh output/*.mov
 
-      - name: Encode AuroraFlow to MP4
-        run: ffmpeg -y -i output/AuroraFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlow.mp4
+      - name: Encode GlitterFlow to MP4
+        run: ffmpeg -y -i output/GlitterFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GlitterFlow.mp4
 
-      - name: Encode AuroraFlowSunset to MP4
-        run: ffmpeg -y -i output/AuroraFlowSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowSunset.mp4
-
-      - name: Encode AuroraFlowArctic to MP4
-        run: ffmpeg -y -i output/AuroraFlowArctic-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowArctic.mp4
-
-      - name: Encode AuroraFlowForest to MP4
-        run: ffmpeg -y -i output/AuroraFlowForest-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowForest.mp4
-
-      - name: Encode AuroraFlowGolden to MP4
-        run: ffmpeg -y -i output/AuroraFlowGolden-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/AuroraFlowGolden.mp4
-
-      - name: Check final file sizes
+      - name: Check final file size
         run: ls -lh output/*.mp4
 
-      - name: Upload AuroraFlow
+      - name: Upload GlitterFlow
         uses: actions/upload-artifact@v4
         with:
-          name: AuroraFlow-4K
-          path: output/AuroraFlow.mp4
+          name: GlitterFlow-4K
+          path: output/GlitterFlow.mp4
 
-      - name: Upload AuroraFlowSunset
+      - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: AuroraFlowSunset-4K
-          path: output/AuroraFlowSunset.mp4
-
-      - name: Upload AuroraFlowArctic
-        uses: actions/upload-artifact@v4
-        with:
-          name: AuroraFlowArctic-4K
-          path: output/AuroraFlowArctic.mp4
-
-      - name: Upload AuroraFlowForest
-        uses: actions/upload-artifact@v4
-        with:
-          name: AuroraFlowForest-4K
-          path: output/AuroraFlowForest.mp4
-
-      - name: Upload AuroraFlowGolden
-        uses: actions/upload-artifact@v4
-        with:
-          name: AuroraFlowGolden-4K
-          path: output/AuroraFlowGolden.mp4
-
-      - name: Upload ProRes masters
-        uses: actions/upload-artifact@v4
-        with:
-          name: AuroraFlow-ProRes
-          path: |
-            output/AuroraFlow-prores.mov
-            output/AuroraFlowSunset-prores.mov
-            output/AuroraFlowArctic-prores.mov
-            output/AuroraFlowForest-prores.mov
-            output/AuroraFlowGolden-prores.mov
+          name: GlitterFlow-ProRes
+          path: output/GlitterFlow-prores.mov
