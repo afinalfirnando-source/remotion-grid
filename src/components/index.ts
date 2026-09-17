@@ -22,3 +22,6 @@ export { Inferno } from './Inferno';
 export type { InfernoScheme } from './Inferno';
 export { AuroraFlow } from './AuroraFlow';
 export type { AuroraFlowScheme } from './AuroraFlow';
+export { GlitterFlow } from './GlitterFlow';
+export { LiquidChrome } from './LiquidChrome';
+export type { LiquidChromeScheme } from './LiquidChrome';

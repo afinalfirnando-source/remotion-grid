@@ -1,4 +1,4 @@
-name: Render GlitterFlow
+name: Render LiquidChrome (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,26 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render GlitterFlow (ProRes)
-        run: npx remotion render src/index.tsx GlitterFlow output/GlitterFlow-prores.mov --codec prores --prores-profile hq
+      - name: Render LiquidChrome (ProRes)
+        run: npx remotion render src/index.tsx LiquidChrome output/LiquidChrome-prores.mov --codec prores --prores-profile hq
 
-      - name: Check ProRes size
+      - name: Render LiquidChromeGold (ProRes)
+        run: npx remotion render src/index.tsx LiquidChromeGold output/LiquidChromeGold-prores.mov --codec prores --prores-profile hq
+
+      - name: Render LiquidChromeRose (ProRes)
+        run: npx remotion render src/index.tsx LiquidChromeRose output/LiquidChromeRose-prores.mov --codec prores --prores-profile hq
+
+      - name: Render LiquidChromeEmerald (ProRes)
+        run: npx remotion render src/index.tsx LiquidChromeEmerald output/LiquidChromeEmerald-prores.mov --codec prores --prores-profile hq
+
+      - name: Render LiquidChromeObsidian (ProRes)
+        run: npx remotion render src/index.tsx LiquidChromeObsidian output/LiquidChromeObsidian-prores.mov --codec prores --prores-profile hq
+
+      - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode GlitterFlow to MP4
-        run: ffmpeg -y -i output/GlitterFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GlitterFlow.mp4
+      - name: Encode LiquidChrome to MP4
+        run: ffmpeg -y -i output/LiquidChrome-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChrome.mp4
 
-      - name: Check final file size
+      - name: Encode LiquidChromeGold to MP4
+        run: ffmpeg -y -i output/LiquidChromeGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeGold.mp4
+
+      - name: Encode LiquidChromeRose to MP4
+        run: ffmpeg -y -i output/LiquidChromeRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeRose.mp4
+
+      - name: Encode LiquidChromeEmerald to MP4
+        run: ffmpeg -y -i output/LiquidChromeEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeEmerald.mp4
+
+      - name: Encode LiquidChromeObsidian to MP4
+        run: ffmpeg -y -i output/LiquidChromeObsidian-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/LiquidChromeObsidian.mp4
+
+      - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload GlitterFlow
+      - name: Upload LiquidChrome
         uses: actions/upload-artifact@v4
         with:
-          name: GlitterFlow-4K
-          path: output/GlitterFlow.mp4
+          name: LiquidChrome-4K
+          path: output/LiquidChrome.mp4
 
-      - name: Upload ProRes master
+      - name: Upload LiquidChromeGold
         uses: actions/upload-artifact@v4
         with:
-          name: GlitterFlow-ProRes
-          path: output/GlitterFlow-prores.mov
+          name: LiquidChromeGold-4K
+          path: output/LiquidChromeGold.mp4
+
+      - name: Upload LiquidChromeRose
+        uses: actions/upload-artifact@v4
+        with:
+          name: LiquidChromeRose-4K
+          path: output/LiquidChromeRose.mp4
+
+      - name: Upload LiquidChromeEmerald
+        uses: actions/upload-artifact@v4
+        with:
+          name: LiquidChromeEmerald-4K
+          path: output/LiquidChromeEmerald.mp4
+
+      - name: Upload LiquidChromeObsidian
+        uses: actions/upload-artifact@v4
+        with:
+          name: LiquidChromeObsidian-4K
+          path: output/LiquidChromeObsidian.mp4
+
+      - name: Upload ProRes masters
+        uses: actions/upload-artifact@v4
+        with:
+          name: LiquidChrome-ProRes
+          path: |
+            output/LiquidChrome-prores.mov
+            output/LiquidChromeGold-prores.mov
+            output/LiquidChromeRose-prores.mov
+            output/LiquidChromeEmerald-prores.mov
+            output/LiquidChromeObsidian-prores.mov
