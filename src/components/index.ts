@@ -29,3 +29,5 @@ export { LavaVeins } from './LavaVeins';
 export type { LavaVeinsScheme } from './LavaVeins';
 export { MarbleFlow } from './MarbleFlow';
 export type { MarbleScheme } from './MarbleFlow';
+export { UnderwaterCaustics } from './UnderwaterCaustics';
+export type { CausticScheme } from './UnderwaterCaustics';

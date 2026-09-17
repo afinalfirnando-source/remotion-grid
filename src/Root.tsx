@@ -30,6 +30,8 @@ import { LavaVeins } from './components/LavaVeins';
 import type { LavaVeinsScheme } from './components/LavaVeins';
 import { MarbleFlow } from './components/MarbleFlow';
 import type { MarbleScheme } from './components/MarbleFlow';
+import { UnderwaterCaustics } from './components/UnderwaterCaustics';
+import type { CausticScheme } from './components/UnderwaterCaustics';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -712,6 +714,56 @@ export const RemotionRoot: React.FC = () => {
         id="MarbleFlowRoyal"
         component={() => (
           <MarbleFlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="UnderwaterCaustics"
+        component={() => (
+          <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="tropical" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="UnderwaterCausticsDeepOcean"
+        component={() => (
+          <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="deepOcean" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="UnderwaterCausticsCoral"
+        component={() => (
+          <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="coral" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="UnderwaterCausticsKelp"
+        component={() => (
+          <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="kelp" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="UnderwaterCausticsAbyss"
+        component={() => (
+          <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="abyss" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

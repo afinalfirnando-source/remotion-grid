@@ -1,4 +1,4 @@
-name: Render MarbleFlow (5 colors)
+name: Render UnderwaterCaustics (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render MarbleFlow (ProRes)
-        run: npx remotion render src/index.tsx MarbleFlow output/MarbleFlow-prores.mov --codec prores --prores-profile hq
+      - name: Render UnderwaterCaustics (ProRes)
+        run: npx remotion render src/index.tsx UnderwaterCaustics output/UnderwaterCaustics-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MarbleFlowNoir (ProRes)
-        run: npx remotion render src/index.tsx MarbleFlowNoir output/MarbleFlowNoir-prores.mov --codec prores --prores-profile hq
+      - name: Render UnderwaterCausticsDeepOcean (ProRes)
+        run: npx remotion render src/index.tsx UnderwaterCausticsDeepOcean output/UnderwaterCausticsDeepOcean-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MarbleFlowRosa (ProRes)
-        run: npx remotion render src/index.tsx MarbleFlowRosa output/MarbleFlowRosa-prores.mov --codec prores --prores-profile hq
+      - name: Render UnderwaterCausticsCoral (ProRes)
+        run: npx remotion render src/index.tsx UnderwaterCausticsCoral output/UnderwaterCausticsCoral-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MarbleFlowVerde (ProRes)
-        run: npx remotion render src/index.tsx MarbleFlowVerde output/MarbleFlowVerde-prores.mov --codec prores --prores-profile hq
+      - name: Render UnderwaterCausticsKelp (ProRes)
+        run: npx remotion render src/index.tsx UnderwaterCausticsKelp output/UnderwaterCausticsKelp-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MarbleFlowRoyal (ProRes)
-        run: npx remotion render src/index.tsx MarbleFlowRoyal output/MarbleFlowRoyal-prores.mov --codec prores --prores-profile hq
+      - name: Render UnderwaterCausticsAbyss (ProRes)
+        run: npx remotion render src/index.tsx UnderwaterCausticsAbyss output/UnderwaterCausticsAbyss-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode MarbleFlow to MP4
-        run: ffmpeg -y -i output/MarbleFlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlow.mp4
+      - name: Encode UnderwaterCaustics to MP4
+        run: ffmpeg -y -i output/UnderwaterCaustics-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCaustics.mp4
 
-      - name: Encode MarbleFlowNoir to MP4
-        run: ffmpeg -y -i output/MarbleFlowNoir-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowNoir.mp4
+      - name: Encode UnderwaterCausticsDeepOcean to MP4
+        run: ffmpeg -y -i output/UnderwaterCausticsDeepOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsDeepOcean.mp4
 
-      - name: Encode MarbleFlowRosa to MP4
-        run: ffmpeg -y -i output/MarbleFlowRosa-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowRosa.mp4
+      - name: Encode UnderwaterCausticsCoral to MP4
+        run: ffmpeg -y -i output/UnderwaterCausticsCoral-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsCoral.mp4
 
-      - name: Encode MarbleFlowVerde to MP4
-        run: ffmpeg -y -i output/MarbleFlowVerde-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowVerde.mp4
+      - name: Encode UnderwaterCausticsKelp to MP4
+        run: ffmpeg -y -i output/UnderwaterCausticsKelp-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsKelp.mp4
 
-      - name: Encode MarbleFlowRoyal to MP4
-        run: ffmpeg -y -i output/MarbleFlowRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MarbleFlowRoyal.mp4
+      - name: Encode UnderwaterCausticsAbyss to MP4
+        run: ffmpeg -y -i output/UnderwaterCausticsAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsAbyss.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload MarbleFlow
+      - name: Upload UnderwaterCaustics
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlow-4K
-          path: output/MarbleFlow.mp4
+          name: UnderwaterCaustics-4K
+          path: output/UnderwaterCaustics.mp4
 
-      - name: Upload MarbleFlowNoir
+      - name: Upload UnderwaterCausticsDeepOcean
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlowNoir-4K
-          path: output/MarbleFlowNoir.mp4
+          name: UnderwaterCausticsDeepOcean-4K
+          path: output/UnderwaterCausticsDeepOcean.mp4
 
-      - name: Upload MarbleFlowRosa
+      - name: Upload UnderwaterCausticsCoral
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlowRosa-4K
-          path: output/MarbleFlowRosa.mp4
+          name: UnderwaterCausticsCoral-4K
+          path: output/UnderwaterCausticsCoral.mp4
 
-      - name: Upload MarbleFlowVerde
+      - name: Upload UnderwaterCausticsKelp
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlowVerde-4K
-          path: output/MarbleFlowVerde.mp4
+          name: UnderwaterCausticsKelp-4K
+          path: output/UnderwaterCausticsKelp.mp4
 
-      - name: Upload MarbleFlowRoyal
+      - name: Upload UnderwaterCausticsAbyss
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlowRoyal-4K
-          path: output/MarbleFlowRoyal.mp4
+          name: UnderwaterCausticsAbyss-4K
+          path: output/UnderwaterCausticsAbyss.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: MarbleFlow-ProRes
+          name: UnderwaterCaustics-ProRes
           path: |
-            output/MarbleFlow-prores.mov
-            output/MarbleFlowNoir-prores.mov
-            output/MarbleFlowRosa-prores.mov
-            output/MarbleFlowVerde-prores.mov
-            output/MarbleFlowRoyal-prores.mov
+            output/UnderwaterCaustics-prores.mov
+            output/UnderwaterCausticsDeepOcean-prores.mov
+            output/UnderwaterCausticsCoral-prores.mov
+            output/UnderwaterCausticsKelp-prores.mov
+            output/UnderwaterCausticsAbyss-prores.mov
