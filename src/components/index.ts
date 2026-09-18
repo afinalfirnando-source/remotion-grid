@@ -40,3 +40,4 @@ export { PoolRipples } from './PoolRipples';
 export type { PoolScheme } from './PoolRipples';
 export { BokehGlow } from './BokehGlow';
 export type { BokehScheme } from './BokehGlow';
+export { FlowLines } from './FlowLines';
