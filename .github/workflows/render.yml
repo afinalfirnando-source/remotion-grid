@@ -1,4 +1,4 @@
-name: Render FrostCrystal (5 colors)
+name: Render BubbleDrift (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render FrostCrystal (ProRes)
-        run: npx remotion render src/index.tsx FrostCrystal output/FrostCrystal-prores.mov --codec prores --prores-profile hq
+      - name: Render BubbleDrift (ProRes)
+        run: npx remotion render src/index.tsx BubbleDrift output/BubbleDrift-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FrostCrystalAurora (ProRes)
-        run: npx remotion render src/index.tsx FrostCrystalAurora output/FrostCrystalAurora-prores.mov --codec prores --prores-profile hq
+      - name: Render BubbleDriftGold (ProRes)
+        run: npx remotion render src/index.tsx BubbleDriftGold output/BubbleDriftGold-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FrostCrystalEmber (ProRes)
-        run: npx remotion render src/index.tsx FrostCrystalEmber output/FrostCrystalEmber-prores.mov --codec prores --prores-profile hq
+      - name: Render BubbleDriftOcean (ProRes)
+        run: npx remotion render src/index.tsx BubbleDriftOcean output/BubbleDriftOcean-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FrostCrystalVoid (ProRes)
-        run: npx remotion render src/index.tsx FrostCrystalVoid output/FrostCrystalVoid-prores.mov --codec prores --prores-profile hq
+      - name: Render BubbleDriftRose (ProRes)
+        run: npx remotion render src/index.tsx BubbleDriftRose output/BubbleDriftRose-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FrostCrystalEmerald (ProRes)
-        run: npx remotion render src/index.tsx FrostCrystalEmerald output/FrostCrystalEmerald-prores.mov --codec prores --prores-profile hq
+      - name: Render BubbleDriftEmerald (ProRes)
+        run: npx remotion render src/index.tsx BubbleDriftEmerald output/BubbleDriftEmerald-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode FrostCrystal to MP4
-        run: ffmpeg -y -i output/FrostCrystal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystal.mp4
+      - name: Encode BubbleDrift to MP4
+        run: ffmpeg -y -i output/BubbleDrift-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDrift.mp4
 
-      - name: Encode FrostCrystalAurora to MP4
-        run: ffmpeg -y -i output/FrostCrystalAurora-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalAurora.mp4
+      - name: Encode BubbleDriftGold to MP4
+        run: ffmpeg -y -i output/BubbleDriftGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftGold.mp4
 
-      - name: Encode FrostCrystalEmber to MP4
-        run: ffmpeg -y -i output/FrostCrystalEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalEmber.mp4
+      - name: Encode BubbleDriftOcean to MP4
+        run: ffmpeg -y -i output/BubbleDriftOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftOcean.mp4
 
-      - name: Encode FrostCrystalVoid to MP4
-        run: ffmpeg -y -i output/FrostCrystalVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalVoid.mp4
+      - name: Encode BubbleDriftRose to MP4
+        run: ffmpeg -y -i output/BubbleDriftRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftRose.mp4
 
-      - name: Encode FrostCrystalEmerald to MP4
-        run: ffmpeg -y -i output/FrostCrystalEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalEmerald.mp4
+      - name: Encode BubbleDriftEmerald to MP4
+        run: ffmpeg -y -i output/BubbleDriftEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftEmerald.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload FrostCrystal
+      - name: Upload BubbleDrift
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystal-4K
-          path: output/FrostCrystal.mp4
+          name: BubbleDrift-4K
+          path: output/BubbleDrift.mp4
 
-      - name: Upload FrostCrystalAurora
+      - name: Upload BubbleDriftGold
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystalAurora-4K
-          path: output/FrostCrystalAurora.mp4
+          name: BubbleDriftGold-4K
+          path: output/BubbleDriftGold.mp4
 
-      - name: Upload FrostCrystalEmber
+      - name: Upload BubbleDriftOcean
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystalEmber-4K
-          path: output/FrostCrystalEmber.mp4
+          name: BubbleDriftOcean-4K
+          path: output/BubbleDriftOcean.mp4
 
-      - name: Upload FrostCrystalVoid
+      - name: Upload BubbleDriftRose
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystalVoid-4K
-          path: output/FrostCrystalVoid.mp4
+          name: BubbleDriftRose-4K
+          path: output/BubbleDriftRose.mp4
 
-      - name: Upload FrostCrystalEmerald
+      - name: Upload BubbleDriftEmerald
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystalEmerald-4K
-          path: output/FrostCrystalEmerald.mp4
+          name: BubbleDriftEmerald-4K
+          path: output/BubbleDriftEmerald.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: FrostCrystal-ProRes
+          name: BubbleDrift-ProRes
           path: |
-            output/FrostCrystal-prores.mov
-            output/FrostCrystalAurora-prores.mov
-            output/FrostCrystalEmber-prores.mov
-            output/FrostCrystalVoid-prores.mov
-            output/FrostCrystalEmerald-prores.mov
+            output/BubbleDrift-prores.mov
+            output/BubbleDriftGold-prores.mov
+            output/BubbleDriftOcean-prores.mov
+            output/BubbleDriftRose-prores.mov
+            output/BubbleDriftEmerald-prores.mov

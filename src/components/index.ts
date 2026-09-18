@@ -33,3 +33,6 @@ export { UnderwaterCaustics } from './UnderwaterCaustics';
 export type { CausticScheme } from './UnderwaterCaustics';
 export { FrostCrystal } from './FrostCrystal';
 export type { FrostScheme } from './FrostCrystal';
+export { DiagonalFlow } from './DiagonalFlow';
+export { BubbleDrift } from './BubbleDrift';
+export type { BubbleScheme } from './BubbleDrift';

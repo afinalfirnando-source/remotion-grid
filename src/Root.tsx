@@ -34,6 +34,9 @@ import { UnderwaterCaustics } from './components/UnderwaterCaustics';
 import type { CausticScheme } from './components/UnderwaterCaustics';
 import { FrostCrystal } from './components/FrostCrystal';
 import type { FrostScheme } from './components/FrostCrystal';
+import { DiagonalFlow } from './components/DiagonalFlow';
+import { BubbleDrift } from './components/BubbleDrift';
+import type { BubbleScheme } from './components/BubbleDrift';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -816,6 +819,66 @@ export const RemotionRoot: React.FC = () => {
         id="FrostCrystalEmerald"
         component={() => (
           <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="DiagonalFlow"
+        component={() => (
+          <DiagonalFlow width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BubbleDrift"
+        component={() => (
+          <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="silver" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BubbleDriftGold"
+        component={() => (
+          <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="gold" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BubbleDriftOcean"
+        component={() => (
+          <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ocean" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BubbleDriftRose"
+        component={() => (
+          <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="rose" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BubbleDriftEmerald"
+        component={() => (
+          <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}
