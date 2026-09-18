@@ -48,6 +48,8 @@ import { HexStone } from './components/HexStone';
 import type { HexStoneScheme } from './components/HexStone';
 import { WireWave } from './components/WireWave';
 import type { WireScheme } from './components/WireWave';
+import { PlushFur } from './components/PlushFur';
+import type { FurScheme } from './components/PlushFur';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1140,6 +1142,56 @@ export const RemotionRoot: React.FC = () => {
         id="WireWaveRoyal"
         component={() => (
           <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlushFur"
+        component={() => (
+          <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="pink" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlushFurCream"
+        component={() => (
+          <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="cream" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlushFurLavender"
+        component={() => (
+          <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lavender" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlushFurMint"
+        component={() => (
+          <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlushFurSky"
+        component={() => (
+          <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sky" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

@@ -1,4 +1,4 @@
-name: Render WireWave (5 colors)
+name: Render PlushFur (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render WireWave (ProRes)
-        run: npx remotion render src/index.tsx WireWave output/WireWave-prores.mov --codec prores --prores-profile hq
+      - name: Render PlushFur (ProRes)
+        run: npx remotion render src/index.tsx PlushFur output/PlushFur-prores.mov --codec prores --prores-profile hq
 
-      - name: Render WireWaveEmber (ProRes)
-        run: npx remotion render src/index.tsx WireWaveEmber output/WireWaveEmber-prores.mov --codec prores --prores-profile hq
+      - name: Render PlushFurCream (ProRes)
+        run: npx remotion render src/index.tsx PlushFurCream output/PlushFurCream-prores.mov --codec prores --prores-profile hq
 
-      - name: Render WireWaveAbyss (ProRes)
-        run: npx remotion render src/index.tsx WireWaveAbyss output/WireWaveAbyss-prores.mov --codec prores --prores-profile hq
+      - name: Render PlushFurLavender (ProRes)
+        run: npx remotion render src/index.tsx PlushFurLavender output/PlushFurLavender-prores.mov --codec prores --prores-profile hq
 
-      - name: Render WireWaveMint (ProRes)
-        run: npx remotion render src/index.tsx WireWaveMint output/WireWaveMint-prores.mov --codec prores --prores-profile hq
+      - name: Render PlushFurMint (ProRes)
+        run: npx remotion render src/index.tsx PlushFurMint output/PlushFurMint-prores.mov --codec prores --prores-profile hq
 
-      - name: Render WireWaveRoyal (ProRes)
-        run: npx remotion render src/index.tsx WireWaveRoyal output/WireWaveRoyal-prores.mov --codec prores --prores-profile hq
+      - name: Render PlushFurSky (ProRes)
+        run: npx remotion render src/index.tsx PlushFurSky output/PlushFurSky-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode WireWave to MP4
-        run: ffmpeg -y -i output/WireWave-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWave.mp4
+      - name: Encode PlushFur to MP4
+        run: ffmpeg -y -i output/PlushFur-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFur.mp4
 
-      - name: Encode WireWaveEmber to MP4
-        run: ffmpeg -y -i output/WireWaveEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveEmber.mp4
+      - name: Encode PlushFurCream to MP4
+        run: ffmpeg -y -i output/PlushFurCream-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurCream.mp4
 
-      - name: Encode WireWaveAbyss to MP4
-        run: ffmpeg -y -i output/WireWaveAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveAbyss.mp4
+      - name: Encode PlushFurLavender to MP4
+        run: ffmpeg -y -i output/PlushFurLavender-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurLavender.mp4
 
-      - name: Encode WireWaveMint to MP4
-        run: ffmpeg -y -i output/WireWaveMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveMint.mp4
+      - name: Encode PlushFurMint to MP4
+        run: ffmpeg -y -i output/PlushFurMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurMint.mp4
 
-      - name: Encode WireWaveRoyal to MP4
-        run: ffmpeg -y -i output/WireWaveRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveRoyal.mp4
+      - name: Encode PlushFurSky to MP4
+        run: ffmpeg -y -i output/PlushFurSky-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurSky.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload WireWave
+      - name: Upload PlushFur
         uses: actions/upload-artifact@v4
         with:
-          name: WireWave-4K
-          path: output/WireWave.mp4
+          name: PlushFur-4K
+          path: output/PlushFur.mp4
 
-      - name: Upload WireWaveEmber
+      - name: Upload PlushFurCream
         uses: actions/upload-artifact@v4
         with:
-          name: WireWaveEmber-4K
-          path: output/WireWaveEmber.mp4
+          name: PlushFurCream-4K
+          path: output/PlushFurCream.mp4
 
-      - name: Upload WireWaveAbyss
+      - name: Upload PlushFurLavender
         uses: actions/upload-artifact@v4
         with:
-          name: WireWaveAbyss-4K
-          path: output/WireWaveAbyss.mp4
+          name: PlushFurLavender-4K
+          path: output/PlushFurLavender.mp4
 
-      - name: Upload WireWaveMint
+      - name: Upload PlushFurMint
         uses: actions/upload-artifact@v4
         with:
-          name: WireWaveMint-4K
-          path: output/WireWaveMint.mp4
+          name: PlushFurMint-4K
+          path: output/PlushFurMint.mp4
 
-      - name: Upload WireWaveRoyal
+      - name: Upload PlushFurSky
         uses: actions/upload-artifact@v4
         with:
-          name: WireWaveRoyal-4K
-          path: output/WireWaveRoyal.mp4
+          name: PlushFurSky-4K
+          path: output/PlushFurSky.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: WireWave-ProRes
+          name: PlushFur-ProRes
           path: |
-            output/WireWave-prores.mov
-            output/WireWaveEmber-prores.mov
-            output/WireWaveAbyss-prores.mov
-            output/WireWaveMint-prores.mov
-            output/WireWaveRoyal-prores.mov
+            output/PlushFur-prores.mov
+            output/PlushFurCream-prores.mov
+            output/PlushFurLavender-prores.mov
+            output/PlushFurMint-prores.mov
+            output/PlushFurSky-prores.mov
