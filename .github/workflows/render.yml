@@ -1,4 +1,4 @@
-name: Render BubbleDrift (5 colors)
+name: Render PoolRipples (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render BubbleDrift (ProRes)
-        run: npx remotion render src/index.tsx BubbleDrift output/BubbleDrift-prores.mov --codec prores --prores-profile hq
+      - name: Render PoolRipples (ProRes)
+        run: npx remotion render src/index.tsx PoolRipples output/PoolRipples-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BubbleDriftGold (ProRes)
-        run: npx remotion render src/index.tsx BubbleDriftGold output/BubbleDriftGold-prores.mov --codec prores --prores-profile hq
+      - name: Render PoolRipplesLagoon (ProRes)
+        run: npx remotion render src/index.tsx PoolRipplesLagoon output/PoolRipplesLagoon-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BubbleDriftOcean (ProRes)
-        run: npx remotion render src/index.tsx BubbleDriftOcean output/BubbleDriftOcean-prores.mov --codec prores --prores-profile hq
+      - name: Render PoolRipplesSunset (ProRes)
+        run: npx remotion render src/index.tsx PoolRipplesSunset output/PoolRipplesSunset-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BubbleDriftRose (ProRes)
-        run: npx remotion render src/index.tsx BubbleDriftRose output/BubbleDriftRose-prores.mov --codec prores --prores-profile hq
+      - name: Render PoolRipplesMidnight (ProRes)
+        run: npx remotion render src/index.tsx PoolRipplesMidnight output/PoolRipplesMidnight-prores.mov --codec prores --prores-profile hq
 
-      - name: Render BubbleDriftEmerald (ProRes)
-        run: npx remotion render src/index.tsx BubbleDriftEmerald output/BubbleDriftEmerald-prores.mov --codec prores --prores-profile hq
+      - name: Render PoolRipplesEmerald (ProRes)
+        run: npx remotion render src/index.tsx PoolRipplesEmerald output/PoolRipplesEmerald-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode BubbleDrift to MP4
-        run: ffmpeg -y -i output/BubbleDrift-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDrift.mp4
+      - name: Encode PoolRipples to MP4
+        run: ffmpeg -y -i output/PoolRipples-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipples.mp4
 
-      - name: Encode BubbleDriftGold to MP4
-        run: ffmpeg -y -i output/BubbleDriftGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftGold.mp4
+      - name: Encode PoolRipplesLagoon to MP4
+        run: ffmpeg -y -i output/PoolRipplesLagoon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesLagoon.mp4
 
-      - name: Encode BubbleDriftOcean to MP4
-        run: ffmpeg -y -i output/BubbleDriftOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftOcean.mp4
+      - name: Encode PoolRipplesSunset to MP4
+        run: ffmpeg -y -i output/PoolRipplesSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesSunset.mp4
 
-      - name: Encode BubbleDriftRose to MP4
-        run: ffmpeg -y -i output/BubbleDriftRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftRose.mp4
+      - name: Encode PoolRipplesMidnight to MP4
+        run: ffmpeg -y -i output/PoolRipplesMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesMidnight.mp4
 
-      - name: Encode BubbleDriftEmerald to MP4
-        run: ffmpeg -y -i output/BubbleDriftEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BubbleDriftEmerald.mp4
+      - name: Encode PoolRipplesEmerald to MP4
+        run: ffmpeg -y -i output/PoolRipplesEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesEmerald.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload BubbleDrift
+      - name: Upload PoolRipples
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDrift-4K
-          path: output/BubbleDrift.mp4
+          name: PoolRipples-4K
+          path: output/PoolRipples.mp4
 
-      - name: Upload BubbleDriftGold
+      - name: Upload PoolRipplesLagoon
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDriftGold-4K
-          path: output/BubbleDriftGold.mp4
+          name: PoolRipplesLagoon-4K
+          path: output/PoolRipplesLagoon.mp4
 
-      - name: Upload BubbleDriftOcean
+      - name: Upload PoolRipplesSunset
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDriftOcean-4K
-          path: output/BubbleDriftOcean.mp4
+          name: PoolRipplesSunset-4K
+          path: output/PoolRipplesSunset.mp4
 
-      - name: Upload BubbleDriftRose
+      - name: Upload PoolRipplesMidnight
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDriftRose-4K
-          path: output/BubbleDriftRose.mp4
+          name: PoolRipplesMidnight-4K
+          path: output/PoolRipplesMidnight.mp4
 
-      - name: Upload BubbleDriftEmerald
+      - name: Upload PoolRipplesEmerald
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDriftEmerald-4K
-          path: output/BubbleDriftEmerald.mp4
+          name: PoolRipplesEmerald-4K
+          path: output/PoolRipplesEmerald.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: BubbleDrift-ProRes
+          name: PoolRipples-ProRes
           path: |
-            output/BubbleDrift-prores.mov
-            output/BubbleDriftGold-prores.mov
-            output/BubbleDriftOcean-prores.mov
-            output/BubbleDriftRose-prores.mov
-            output/BubbleDriftEmerald-prores.mov
+            output/PoolRipples-prores.mov
+            output/PoolRipplesLagoon-prores.mov
+            output/PoolRipplesSunset-prores.mov
+            output/PoolRipplesMidnight-prores.mov
+            output/PoolRipplesEmerald-prores.mov

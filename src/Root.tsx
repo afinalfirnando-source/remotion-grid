@@ -37,6 +37,8 @@ import type { FrostScheme } from './components/FrostCrystal';
 import { DiagonalFlow } from './components/DiagonalFlow';
 import { BubbleDrift } from './components/BubbleDrift';
 import type { BubbleScheme } from './components/BubbleDrift';
+import { PoolRipples } from './components/PoolRipples';
+import type { PoolScheme } from './components/PoolRipples';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -879,6 +881,56 @@ export const RemotionRoot: React.FC = () => {
         id="BubbleDriftEmerald"
         component={() => (
           <BubbleDrift width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PoolRipples"
+        component={() => (
+          <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="tropical" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PoolRipplesLagoon"
+        component={() => (
+          <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lagoon" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PoolRipplesSunset"
+        component={() => (
+          <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunset" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PoolRipplesMidnight"
+        component={() => (
+          <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="midnight" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PoolRipplesEmerald"
+        component={() => (
+          <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

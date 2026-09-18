@@ -36,3 +36,5 @@ export type { FrostScheme } from './FrostCrystal';
 export { DiagonalFlow } from './DiagonalFlow';
 export { BubbleDrift } from './BubbleDrift';
 export type { BubbleScheme } from './BubbleDrift';
+export { PoolRipples } from './PoolRipples';
+export type { PoolScheme } from './PoolRipples';
