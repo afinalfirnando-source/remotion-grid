@@ -44,6 +44,8 @@ import type { BokehScheme } from './components/BokehGlow';
 import { FlowLines } from './components/FlowLines';
 import { NeonTubes } from './components/NeonTubes';
 import type { NeonTubesScheme } from './components/NeonTubes';
+import { HexStone } from './components/HexStone';
+import type { HexStoneScheme } from './components/HexStone';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1026,6 +1028,66 @@ export const RemotionRoot: React.FC = () => {
         id="MagmaTubes"
         component={() => (
           <NeonTubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="magma" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStone"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="carbon" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStoneGraphite"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="graphite" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStoneSand"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sandstone" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStoneSlate"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="slate" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStoneBronze"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="bronze" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="HexStoneMidnight"
+        component={() => (
+          <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="midnight" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

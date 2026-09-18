@@ -1,4 +1,4 @@
-name: Render NeonTubes (3 colors)
+name: Render HexStone (6 colors)
 
 on:
   workflow_dispatch:
@@ -24,53 +24,92 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render NeonTubes (ProRes)
-        run: npx remotion render src/index.tsx NeonTubes output/NeonTubes-prores.mov --codec prores --prores-profile hq
+      - name: Render HexStone (ProRes)
+        run: npx remotion render src/index.tsx HexStone output/HexStone-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PurpleTubes (ProRes)
-        run: npx remotion render src/index.tsx PurpleTubes output/PurpleTubes-prores.mov --codec prores --prores-profile hq
+      - name: Render HexStoneGraphite (ProRes)
+        run: npx remotion render src/index.tsx HexStoneGraphite output/HexStoneGraphite-prores.mov --codec prores --prores-profile hq
 
-      - name: Render MagmaTubes (ProRes)
-        run: npx remotion render src/index.tsx MagmaTubes output/MagmaTubes-prores.mov --codec prores --prores-profile hq
+      - name: Render HexStoneSand (ProRes)
+        run: npx remotion render src/index.tsx HexStoneSand output/HexStoneSand-prores.mov --codec prores --prores-profile hq
+
+      - name: Render HexStoneSlate (ProRes)
+        run: npx remotion render src/index.tsx HexStoneSlate output/HexStoneSlate-prores.mov --codec prores --prores-profile hq
+
+      - name: Render HexStoneBronze (ProRes)
+        run: npx remotion render src/index.tsx HexStoneBronze output/HexStoneBronze-prores.mov --codec prores --prores-profile hq
+
+      - name: Render HexStoneMidnight (ProRes)
+        run: npx remotion render src/index.tsx HexStoneMidnight output/HexStoneMidnight-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode NeonTubes to MP4
-        run: ffmpeg -y -i output/NeonTubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/NeonTubes.mp4
+      - name: Encode HexStone to MP4
+        run: ffmpeg -y -i output/HexStone-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStone.mp4
 
-      - name: Encode PurpleTubes to MP4
-        run: ffmpeg -y -i output/PurpleTubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PurpleTubes.mp4
+      - name: Encode HexStoneGraphite to MP4
+        run: ffmpeg -y -i output/HexStoneGraphite-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneGraphite.mp4
 
-      - name: Encode MagmaTubes to MP4
-        run: ffmpeg -y -i output/MagmaTubes-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/MagmaTubes.mp4
+      - name: Encode HexStoneSand to MP4
+        run: ffmpeg -y -i output/HexStoneSand-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneSand.mp4
+
+      - name: Encode HexStoneSlate to MP4
+        run: ffmpeg -y -i output/HexStoneSlate-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneSlate.mp4
+
+      - name: Encode HexStoneBronze to MP4
+        run: ffmpeg -y -i output/HexStoneBronze-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneBronze.mp4
+
+      - name: Encode HexStoneMidnight to MP4
+        run: ffmpeg -y -i output/HexStoneMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneMidnight.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload NeonTubes
+      - name: Upload HexStone
         uses: actions/upload-artifact@v4
         with:
-          name: NeonTubes-4K
-          path: output/NeonTubes.mp4
+          name: HexStone-4K
+          path: output/HexStone.mp4
 
-      - name: Upload PurpleTubes
+      - name: Upload HexStoneGraphite
         uses: actions/upload-artifact@v4
         with:
-          name: PurpleTubes-4K
-          path: output/PurpleTubes.mp4
+          name: HexStoneGraphite-4K
+          path: output/HexStoneGraphite.mp4
 
-      - name: Upload MagmaTubes
+      - name: Upload HexStoneSand
         uses: actions/upload-artifact@v4
         with:
-          name: MagmaTubes-4K
-          path: output/MagmaTubes.mp4
+          name: HexStoneSand-4K
+          path: output/HexStoneSand.mp4
+
+      - name: Upload HexStoneSlate
+        uses: actions/upload-artifact@v4
+        with:
+          name: HexStoneSlate-4K
+          path: output/HexStoneSlate.mp4
+
+      - name: Upload HexStoneBronze
+        uses: actions/upload-artifact@v4
+        with:
+          name: HexStoneBronze-4K
+          path: output/HexStoneBronze.mp4
+
+      - name: Upload HexStoneMidnight
+        uses: actions/upload-artifact@v4
+        with:
+          name: HexStoneMidnight-4K
+          path: output/HexStoneMidnight.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: NeonTubes-ProRes
+          name: HexStone-ProRes
           path: |
-            output/NeonTubes-prores.mov
-            output/PurpleTubes-prores.mov
-            output/MagmaTubes-prores.mov
+            output/HexStone-prores.mov
+            output/HexStoneGraphite-prores.mov
+            output/HexStoneSand-prores.mov
+            output/HexStoneSlate-prores.mov
+            output/HexStoneBronze-prores.mov
+            output/HexStoneMidnight-prores.mov

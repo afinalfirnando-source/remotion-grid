@@ -43,3 +43,5 @@ export type { BokehScheme } from './BokehGlow';
 export { FlowLines } from './FlowLines';
 export { NeonTubes } from './NeonTubes';
 export type { NeonTubesScheme } from './NeonTubes';
+export { HexStone } from './HexStone';
+export type { HexStoneScheme } from './HexStone';
