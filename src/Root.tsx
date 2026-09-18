@@ -42,6 +42,8 @@ import type { PoolScheme } from './components/PoolRipples';
 import { BokehGlow } from './components/BokehGlow';
 import type { BokehScheme } from './components/BokehGlow';
 import { FlowLines } from './components/FlowLines';
+import { NeonTubes } from './components/NeonTubes';
+import type { NeonTubesScheme } from './components/NeonTubes';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -994,6 +996,36 @@ export const RemotionRoot: React.FC = () => {
         id="FlowLines"
         component={() => (
           <FlowLines width={3840} height={2160} totalFrames={DURATION} speed={1} />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="NeonTubes"
+        component={() => (
+          <NeonTubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PurpleTubes"
+        component={() => (
+          <NeonTubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="purple" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="MagmaTubes"
+        component={() => (
+          <NeonTubes width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="magma" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}
