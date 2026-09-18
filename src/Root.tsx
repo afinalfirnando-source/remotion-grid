@@ -50,6 +50,8 @@ import { WireWave } from './components/WireWave';
 import type { WireScheme } from './components/WireWave';
 import { PlushFur } from './components/PlushFur';
 import type { FurScheme } from './components/PlushFur';
+import { PlasmaVortex } from './components/PlasmaVortex';
+import type { PlasmaScheme } from './components/PlasmaVortex';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1192,6 +1194,56 @@ export const RemotionRoot: React.FC = () => {
         id="PlushFurSky"
         component={() => (
           <PlushFur width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sky" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlasmaVortex"
+        component={() => (
+          <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="violet" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlasmaVortexCrimson"
+        component={() => (
+          <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="crimson" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlasmaVortexAbyss"
+        component={() => (
+          <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="abyss" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlasmaVortexInferno"
+        component={() => (
+          <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="inferno" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="PlasmaVortexVenom"
+        component={() => (
+          <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="venom" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

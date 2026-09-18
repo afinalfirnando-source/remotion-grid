@@ -49,3 +49,5 @@ export { WireWave } from './WireWave';
 export type { WireScheme } from './WireWave';
 export { PlushFur } from './PlushFur';
 export type { FurScheme } from './PlushFur';
+export { PlasmaVortex } from './PlasmaVortex';
+export type { PlasmaScheme } from './PlasmaVortex';

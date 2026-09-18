@@ -1,4 +1,4 @@
-name: Render PlushFur (5 colors)
+name: Render PlasmaVortex (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PlushFur (ProRes)
-        run: npx remotion render src/index.tsx PlushFur output/PlushFur-prores.mov --codec prores --prores-profile hq
+      - name: Render PlasmaVortex (ProRes)
+        run: npx remotion render src/index.tsx PlasmaVortex output/PlasmaVortex-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlushFurCream (ProRes)
-        run: npx remotion render src/index.tsx PlushFurCream output/PlushFurCream-prores.mov --codec prores --prores-profile hq
+      - name: Render PlasmaVortexCrimson (ProRes)
+        run: npx remotion render src/index.tsx PlasmaVortexCrimson output/PlasmaVortexCrimson-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlushFurLavender (ProRes)
-        run: npx remotion render src/index.tsx PlushFurLavender output/PlushFurLavender-prores.mov --codec prores --prores-profile hq
+      - name: Render PlasmaVortexAbyss (ProRes)
+        run: npx remotion render src/index.tsx PlasmaVortexAbyss output/PlasmaVortexAbyss-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlushFurMint (ProRes)
-        run: npx remotion render src/index.tsx PlushFurMint output/PlushFurMint-prores.mov --codec prores --prores-profile hq
+      - name: Render PlasmaVortexInferno (ProRes)
+        run: npx remotion render src/index.tsx PlasmaVortexInferno output/PlasmaVortexInferno-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlushFurSky (ProRes)
-        run: npx remotion render src/index.tsx PlushFurSky output/PlushFurSky-prores.mov --codec prores --prores-profile hq
+      - name: Render PlasmaVortexVenom (ProRes)
+        run: npx remotion render src/index.tsx PlasmaVortexVenom output/PlasmaVortexVenom-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PlushFur to MP4
-        run: ffmpeg -y -i output/PlushFur-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFur.mp4
+      - name: Encode PlasmaVortex to MP4
+        run: ffmpeg -y -i output/PlasmaVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortex.mp4
 
-      - name: Encode PlushFurCream to MP4
-        run: ffmpeg -y -i output/PlushFurCream-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurCream.mp4
+      - name: Encode PlasmaVortexCrimson to MP4
+        run: ffmpeg -y -i output/PlasmaVortexCrimson-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexCrimson.mp4
 
-      - name: Encode PlushFurLavender to MP4
-        run: ffmpeg -y -i output/PlushFurLavender-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurLavender.mp4
+      - name: Encode PlasmaVortexAbyss to MP4
+        run: ffmpeg -y -i output/PlasmaVortexAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexAbyss.mp4
 
-      - name: Encode PlushFurMint to MP4
-        run: ffmpeg -y -i output/PlushFurMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurMint.mp4
+      - name: Encode PlasmaVortexInferno to MP4
+        run: ffmpeg -y -i output/PlasmaVortexInferno-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexInferno.mp4
 
-      - name: Encode PlushFurSky to MP4
-        run: ffmpeg -y -i output/PlushFurSky-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlushFurSky.mp4
+      - name: Encode PlasmaVortexVenom to MP4
+        run: ffmpeg -y -i output/PlasmaVortexVenom-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexVenom.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PlushFur
+      - name: Upload PlasmaVortex
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFur-4K
-          path: output/PlushFur.mp4
+          name: PlasmaVortex-4K
+          path: output/PlasmaVortex.mp4
 
-      - name: Upload PlushFurCream
+      - name: Upload PlasmaVortexCrimson
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFurCream-4K
-          path: output/PlushFurCream.mp4
+          name: PlasmaVortexCrimson-4K
+          path: output/PlasmaVortexCrimson.mp4
 
-      - name: Upload PlushFurLavender
+      - name: Upload PlasmaVortexAbyss
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFurLavender-4K
-          path: output/PlushFurLavender.mp4
+          name: PlasmaVortexAbyss-4K
+          path: output/PlasmaVortexAbyss.mp4
 
-      - name: Upload PlushFurMint
+      - name: Upload PlasmaVortexInferno
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFurMint-4K
-          path: output/PlushFurMint.mp4
+          name: PlasmaVortexInferno-4K
+          path: output/PlasmaVortexInferno.mp4
 
-      - name: Upload PlushFurSky
+      - name: Upload PlasmaVortexVenom
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFurSky-4K
-          path: output/PlushFurSky.mp4
+          name: PlasmaVortexVenom-4K
+          path: output/PlasmaVortexVenom.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: PlushFur-ProRes
+          name: PlasmaVortex-ProRes
           path: |
-            output/PlushFur-prores.mov
-            output/PlushFurCream-prores.mov
-            output/PlushFurLavender-prores.mov
-            output/PlushFurMint-prores.mov
-            output/PlushFurSky-prores.mov
+            output/PlasmaVortex-prores.mov
+            output/PlasmaVortexCrimson-prores.mov
+            output/PlasmaVortexAbyss-prores.mov
+            output/PlasmaVortexInferno-prores.mov
+            output/PlasmaVortexVenom-prores.mov
