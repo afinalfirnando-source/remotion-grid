@@ -45,3 +45,5 @@ export { NeonTubes } from './NeonTubes';
 export type { NeonTubesScheme } from './NeonTubes';
 export { HexStone } from './HexStone';
 export type { HexStoneScheme } from './HexStone';
+export { WireWave } from './WireWave';
+export type { WireScheme } from './WireWave';

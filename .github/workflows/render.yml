@@ -1,4 +1,4 @@
-name: Render HexStone (6 colors)
+name: Render WireWave (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,92 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render HexStone (ProRes)
-        run: npx remotion render src/index.tsx HexStone output/HexStone-prores.mov --codec prores --prores-profile hq
+      - name: Render WireWave (ProRes)
+        run: npx remotion render src/index.tsx WireWave output/WireWave-prores.mov --codec prores --prores-profile hq
 
-      - name: Render HexStoneGraphite (ProRes)
-        run: npx remotion render src/index.tsx HexStoneGraphite output/HexStoneGraphite-prores.mov --codec prores --prores-profile hq
+      - name: Render WireWaveEmber (ProRes)
+        run: npx remotion render src/index.tsx WireWaveEmber output/WireWaveEmber-prores.mov --codec prores --prores-profile hq
 
-      - name: Render HexStoneSand (ProRes)
-        run: npx remotion render src/index.tsx HexStoneSand output/HexStoneSand-prores.mov --codec prores --prores-profile hq
+      - name: Render WireWaveAbyss (ProRes)
+        run: npx remotion render src/index.tsx WireWaveAbyss output/WireWaveAbyss-prores.mov --codec prores --prores-profile hq
 
-      - name: Render HexStoneSlate (ProRes)
-        run: npx remotion render src/index.tsx HexStoneSlate output/HexStoneSlate-prores.mov --codec prores --prores-profile hq
+      - name: Render WireWaveMint (ProRes)
+        run: npx remotion render src/index.tsx WireWaveMint output/WireWaveMint-prores.mov --codec prores --prores-profile hq
 
-      - name: Render HexStoneBronze (ProRes)
-        run: npx remotion render src/index.tsx HexStoneBronze output/HexStoneBronze-prores.mov --codec prores --prores-profile hq
-
-      - name: Render HexStoneMidnight (ProRes)
-        run: npx remotion render src/index.tsx HexStoneMidnight output/HexStoneMidnight-prores.mov --codec prores --prores-profile hq
+      - name: Render WireWaveRoyal (ProRes)
+        run: npx remotion render src/index.tsx WireWaveRoyal output/WireWaveRoyal-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode HexStone to MP4
-        run: ffmpeg -y -i output/HexStone-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStone.mp4
+      - name: Encode WireWave to MP4
+        run: ffmpeg -y -i output/WireWave-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWave.mp4
 
-      - name: Encode HexStoneGraphite to MP4
-        run: ffmpeg -y -i output/HexStoneGraphite-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneGraphite.mp4
+      - name: Encode WireWaveEmber to MP4
+        run: ffmpeg -y -i output/WireWaveEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveEmber.mp4
 
-      - name: Encode HexStoneSand to MP4
-        run: ffmpeg -y -i output/HexStoneSand-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneSand.mp4
+      - name: Encode WireWaveAbyss to MP4
+        run: ffmpeg -y -i output/WireWaveAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveAbyss.mp4
 
-      - name: Encode HexStoneSlate to MP4
-        run: ffmpeg -y -i output/HexStoneSlate-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneSlate.mp4
+      - name: Encode WireWaveMint to MP4
+        run: ffmpeg -y -i output/WireWaveMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveMint.mp4
 
-      - name: Encode HexStoneBronze to MP4
-        run: ffmpeg -y -i output/HexStoneBronze-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneBronze.mp4
-
-      - name: Encode HexStoneMidnight to MP4
-        run: ffmpeg -y -i output/HexStoneMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/HexStoneMidnight.mp4
+      - name: Encode WireWaveRoyal to MP4
+        run: ffmpeg -y -i output/WireWaveRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/WireWaveRoyal.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload HexStone
+      - name: Upload WireWave
         uses: actions/upload-artifact@v4
         with:
-          name: HexStone-4K
-          path: output/HexStone.mp4
+          name: WireWave-4K
+          path: output/WireWave.mp4
 
-      - name: Upload HexStoneGraphite
+      - name: Upload WireWaveEmber
         uses: actions/upload-artifact@v4
         with:
-          name: HexStoneGraphite-4K
-          path: output/HexStoneGraphite.mp4
+          name: WireWaveEmber-4K
+          path: output/WireWaveEmber.mp4
 
-      - name: Upload HexStoneSand
+      - name: Upload WireWaveAbyss
         uses: actions/upload-artifact@v4
         with:
-          name: HexStoneSand-4K
-          path: output/HexStoneSand.mp4
+          name: WireWaveAbyss-4K
+          path: output/WireWaveAbyss.mp4
 
-      - name: Upload HexStoneSlate
+      - name: Upload WireWaveMint
         uses: actions/upload-artifact@v4
         with:
-          name: HexStoneSlate-4K
-          path: output/HexStoneSlate.mp4
+          name: WireWaveMint-4K
+          path: output/WireWaveMint.mp4
 
-      - name: Upload HexStoneBronze
+      - name: Upload WireWaveRoyal
         uses: actions/upload-artifact@v4
         with:
-          name: HexStoneBronze-4K
-          path: output/HexStoneBronze.mp4
-
-      - name: Upload HexStoneMidnight
-        uses: actions/upload-artifact@v4
-        with:
-          name: HexStoneMidnight-4K
-          path: output/HexStoneMidnight.mp4
+          name: WireWaveRoyal-4K
+          path: output/WireWaveRoyal.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: HexStone-ProRes
+          name: WireWave-ProRes
           path: |
-            output/HexStone-prores.mov
-            output/HexStoneGraphite-prores.mov
-            output/HexStoneSand-prores.mov
-            output/HexStoneSlate-prores.mov
-            output/HexStoneBronze-prores.mov
-            output/HexStoneMidnight-prores.mov
+            output/WireWave-prores.mov
+            output/WireWaveEmber-prores.mov
+            output/WireWaveAbyss-prores.mov
+            output/WireWaveMint-prores.mov
+            output/WireWaveRoyal-prores.mov

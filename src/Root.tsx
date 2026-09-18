@@ -46,6 +46,8 @@ import { NeonTubes } from './components/NeonTubes';
 import type { NeonTubesScheme } from './components/NeonTubes';
 import { HexStone } from './components/HexStone';
 import type { HexStoneScheme } from './components/HexStone';
+import { WireWave } from './components/WireWave';
+import type { WireScheme } from './components/WireWave';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1088,6 +1090,56 @@ export const RemotionRoot: React.FC = () => {
         id="HexStoneMidnight"
         component={() => (
           <HexStone width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="midnight" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WireWave"
+        component={() => (
+          <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mono" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WireWaveEmber"
+        component={() => (
+          <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ember" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WireWaveAbyss"
+        component={() => (
+          <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="abyss" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WireWaveMint"
+        component={() => (
+          <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="WireWaveRoyal"
+        component={() => (
+          <WireWave width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}
