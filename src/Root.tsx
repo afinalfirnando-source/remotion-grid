@@ -32,6 +32,8 @@ import { MarbleFlow } from './components/MarbleFlow';
 import type { MarbleScheme } from './components/MarbleFlow';
 import { UnderwaterCaustics } from './components/UnderwaterCaustics';
 import type { CausticScheme } from './components/UnderwaterCaustics';
+import { FrostCrystal } from './components/FrostCrystal';
+import type { FrostScheme } from './components/FrostCrystal';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -764,6 +766,56 @@ export const RemotionRoot: React.FC = () => {
         id="UnderwaterCausticsAbyss"
         component={() => (
           <UnderwaterCaustics width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="abyss" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FrostCrystal"
+        component={() => (
+          <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="arctic" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FrostCrystalAurora"
+        component={() => (
+          <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="aurora" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FrostCrystalEmber"
+        component={() => (
+          <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ember" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FrostCrystalVoid"
+        component={() => (
+          <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="void" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FrostCrystalEmerald"
+        component={() => (
+          <FrostCrystal width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

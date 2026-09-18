@@ -31,3 +31,5 @@ export { MarbleFlow } from './MarbleFlow';
 export type { MarbleScheme } from './MarbleFlow';
 export { UnderwaterCaustics } from './UnderwaterCaustics';
 export type { CausticScheme } from './UnderwaterCaustics';
+export { FrostCrystal } from './FrostCrystal';
+export type { FrostScheme } from './FrostCrystal';

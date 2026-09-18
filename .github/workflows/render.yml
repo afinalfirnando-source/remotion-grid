@@ -1,4 +1,4 @@
-name: Render UnderwaterCaustics (5 colors)
+name: Render FrostCrystal (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render UnderwaterCaustics (ProRes)
-        run: npx remotion render src/index.tsx UnderwaterCaustics output/UnderwaterCaustics-prores.mov --codec prores --prores-profile hq
+      - name: Render FrostCrystal (ProRes)
+        run: npx remotion render src/index.tsx FrostCrystal output/FrostCrystal-prores.mov --codec prores --prores-profile hq
 
-      - name: Render UnderwaterCausticsDeepOcean (ProRes)
-        run: npx remotion render src/index.tsx UnderwaterCausticsDeepOcean output/UnderwaterCausticsDeepOcean-prores.mov --codec prores --prores-profile hq
+      - name: Render FrostCrystalAurora (ProRes)
+        run: npx remotion render src/index.tsx FrostCrystalAurora output/FrostCrystalAurora-prores.mov --codec prores --prores-profile hq
 
-      - name: Render UnderwaterCausticsCoral (ProRes)
-        run: npx remotion render src/index.tsx UnderwaterCausticsCoral output/UnderwaterCausticsCoral-prores.mov --codec prores --prores-profile hq
+      - name: Render FrostCrystalEmber (ProRes)
+        run: npx remotion render src/index.tsx FrostCrystalEmber output/FrostCrystalEmber-prores.mov --codec prores --prores-profile hq
 
-      - name: Render UnderwaterCausticsKelp (ProRes)
-        run: npx remotion render src/index.tsx UnderwaterCausticsKelp output/UnderwaterCausticsKelp-prores.mov --codec prores --prores-profile hq
+      - name: Render FrostCrystalVoid (ProRes)
+        run: npx remotion render src/index.tsx FrostCrystalVoid output/FrostCrystalVoid-prores.mov --codec prores --prores-profile hq
 
-      - name: Render UnderwaterCausticsAbyss (ProRes)
-        run: npx remotion render src/index.tsx UnderwaterCausticsAbyss output/UnderwaterCausticsAbyss-prores.mov --codec prores --prores-profile hq
+      - name: Render FrostCrystalEmerald (ProRes)
+        run: npx remotion render src/index.tsx FrostCrystalEmerald output/FrostCrystalEmerald-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode UnderwaterCaustics to MP4
-        run: ffmpeg -y -i output/UnderwaterCaustics-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCaustics.mp4
+      - name: Encode FrostCrystal to MP4
+        run: ffmpeg -y -i output/FrostCrystal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystal.mp4
 
-      - name: Encode UnderwaterCausticsDeepOcean to MP4
-        run: ffmpeg -y -i output/UnderwaterCausticsDeepOcean-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsDeepOcean.mp4
+      - name: Encode FrostCrystalAurora to MP4
+        run: ffmpeg -y -i output/FrostCrystalAurora-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalAurora.mp4
 
-      - name: Encode UnderwaterCausticsCoral to MP4
-        run: ffmpeg -y -i output/UnderwaterCausticsCoral-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsCoral.mp4
+      - name: Encode FrostCrystalEmber to MP4
+        run: ffmpeg -y -i output/FrostCrystalEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalEmber.mp4
 
-      - name: Encode UnderwaterCausticsKelp to MP4
-        run: ffmpeg -y -i output/UnderwaterCausticsKelp-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsKelp.mp4
+      - name: Encode FrostCrystalVoid to MP4
+        run: ffmpeg -y -i output/FrostCrystalVoid-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalVoid.mp4
 
-      - name: Encode UnderwaterCausticsAbyss to MP4
-        run: ffmpeg -y -i output/UnderwaterCausticsAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/UnderwaterCausticsAbyss.mp4
+      - name: Encode FrostCrystalEmerald to MP4
+        run: ffmpeg -y -i output/FrostCrystalEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FrostCrystalEmerald.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload UnderwaterCaustics
+      - name: Upload FrostCrystal
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCaustics-4K
-          path: output/UnderwaterCaustics.mp4
+          name: FrostCrystal-4K
+          path: output/FrostCrystal.mp4
 
-      - name: Upload UnderwaterCausticsDeepOcean
+      - name: Upload FrostCrystalAurora
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCausticsDeepOcean-4K
-          path: output/UnderwaterCausticsDeepOcean.mp4
+          name: FrostCrystalAurora-4K
+          path: output/FrostCrystalAurora.mp4
 
-      - name: Upload UnderwaterCausticsCoral
+      - name: Upload FrostCrystalEmber
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCausticsCoral-4K
-          path: output/UnderwaterCausticsCoral.mp4
+          name: FrostCrystalEmber-4K
+          path: output/FrostCrystalEmber.mp4
 
-      - name: Upload UnderwaterCausticsKelp
+      - name: Upload FrostCrystalVoid
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCausticsKelp-4K
-          path: output/UnderwaterCausticsKelp.mp4
+          name: FrostCrystalVoid-4K
+          path: output/FrostCrystalVoid.mp4
 
-      - name: Upload UnderwaterCausticsAbyss
+      - name: Upload FrostCrystalEmerald
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCausticsAbyss-4K
-          path: output/UnderwaterCausticsAbyss.mp4
+          name: FrostCrystalEmerald-4K
+          path: output/FrostCrystalEmerald.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: UnderwaterCaustics-ProRes
+          name: FrostCrystal-ProRes
           path: |
-            output/UnderwaterCaustics-prores.mov
-            output/UnderwaterCausticsDeepOcean-prores.mov
-            output/UnderwaterCausticsCoral-prores.mov
-            output/UnderwaterCausticsKelp-prores.mov
-            output/UnderwaterCausticsAbyss-prores.mov
+            output/FrostCrystal-prores.mov
+            output/FrostCrystalAurora-prores.mov
+            output/FrostCrystalEmber-prores.mov
+            output/FrostCrystalVoid-prores.mov
+            output/FrostCrystalEmerald-prores.mov
