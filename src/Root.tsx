@@ -39,6 +39,8 @@ import { BubbleDrift } from './components/BubbleDrift';
 import type { BubbleScheme } from './components/BubbleDrift';
 import { PoolRipples } from './components/PoolRipples';
 import type { PoolScheme } from './components/PoolRipples';
+import { BokehGlow } from './components/BokehGlow';
+import type { BokehScheme } from './components/BokehGlow';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -931,6 +933,56 @@ export const RemotionRoot: React.FC = () => {
         id="PoolRipplesEmerald"
         component={() => (
           <PoolRipples width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BokehGlow"
+        component={() => (
+          <BokehGlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="aqua" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BokehGlowViolet"
+        component={() => (
+          <BokehGlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="violet" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BokehGlowRose"
+        component={() => (
+          <BokehGlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="rose" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BokehGlowGold"
+        component={() => (
+          <BokehGlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="gold" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BokehGlowEmerald"
+        component={() => (
+          <BokehGlow width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="emerald" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

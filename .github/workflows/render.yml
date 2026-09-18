@@ -1,4 +1,4 @@
-name: Render PoolRipples (5 colors)
+name: Render BokehGlow (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PoolRipples (ProRes)
-        run: npx remotion render src/index.tsx PoolRipples output/PoolRipples-prores.mov --codec prores --prores-profile hq
+      - name: Render BokehGlow (ProRes)
+        run: npx remotion render src/index.tsx BokehGlow output/BokehGlow-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PoolRipplesLagoon (ProRes)
-        run: npx remotion render src/index.tsx PoolRipplesLagoon output/PoolRipplesLagoon-prores.mov --codec prores --prores-profile hq
+      - name: Render BokehGlowViolet (ProRes)
+        run: npx remotion render src/index.tsx BokehGlowViolet output/BokehGlowViolet-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PoolRipplesSunset (ProRes)
-        run: npx remotion render src/index.tsx PoolRipplesSunset output/PoolRipplesSunset-prores.mov --codec prores --prores-profile hq
+      - name: Render BokehGlowRose (ProRes)
+        run: npx remotion render src/index.tsx BokehGlowRose output/BokehGlowRose-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PoolRipplesMidnight (ProRes)
-        run: npx remotion render src/index.tsx PoolRipplesMidnight output/PoolRipplesMidnight-prores.mov --codec prores --prores-profile hq
+      - name: Render BokehGlowGold (ProRes)
+        run: npx remotion render src/index.tsx BokehGlowGold output/BokehGlowGold-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PoolRipplesEmerald (ProRes)
-        run: npx remotion render src/index.tsx PoolRipplesEmerald output/PoolRipplesEmerald-prores.mov --codec prores --prores-profile hq
+      - name: Render BokehGlowEmerald (ProRes)
+        run: npx remotion render src/index.tsx BokehGlowEmerald output/BokehGlowEmerald-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PoolRipples to MP4
-        run: ffmpeg -y -i output/PoolRipples-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipples.mp4
+      - name: Encode BokehGlow to MP4
+        run: ffmpeg -y -i output/BokehGlow-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BokehGlow.mp4
 
-      - name: Encode PoolRipplesLagoon to MP4
-        run: ffmpeg -y -i output/PoolRipplesLagoon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesLagoon.mp4
+      - name: Encode BokehGlowViolet to MP4
+        run: ffmpeg -y -i output/BokehGlowViolet-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BokehGlowViolet.mp4
 
-      - name: Encode PoolRipplesSunset to MP4
-        run: ffmpeg -y -i output/PoolRipplesSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesSunset.mp4
+      - name: Encode BokehGlowRose to MP4
+        run: ffmpeg -y -i output/BokehGlowRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BokehGlowRose.mp4
 
-      - name: Encode PoolRipplesMidnight to MP4
-        run: ffmpeg -y -i output/PoolRipplesMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesMidnight.mp4
+      - name: Encode BokehGlowGold to MP4
+        run: ffmpeg -y -i output/BokehGlowGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BokehGlowGold.mp4
 
-      - name: Encode PoolRipplesEmerald to MP4
-        run: ffmpeg -y -i output/PoolRipplesEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PoolRipplesEmerald.mp4
+      - name: Encode BokehGlowEmerald to MP4
+        run: ffmpeg -y -i output/BokehGlowEmerald-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/BokehGlowEmerald.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PoolRipples
+      - name: Upload BokehGlow
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipples-4K
-          path: output/PoolRipples.mp4
+          name: BokehGlow-4K
+          path: output/BokehGlow.mp4
 
-      - name: Upload PoolRipplesLagoon
+      - name: Upload BokehGlowViolet
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipplesLagoon-4K
-          path: output/PoolRipplesLagoon.mp4
+          name: BokehGlowViolet-4K
+          path: output/BokehGlowViolet.mp4
 
-      - name: Upload PoolRipplesSunset
+      - name: Upload BokehGlowRose
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipplesSunset-4K
-          path: output/PoolRipplesSunset.mp4
+          name: BokehGlowRose-4K
+          path: output/BokehGlowRose.mp4
 
-      - name: Upload PoolRipplesMidnight
+      - name: Upload BokehGlowGold
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipplesMidnight-4K
-          path: output/PoolRipplesMidnight.mp4
+          name: BokehGlowGold-4K
+          path: output/BokehGlowGold.mp4
 
-      - name: Upload PoolRipplesEmerald
+      - name: Upload BokehGlowEmerald
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipplesEmerald-4K
-          path: output/PoolRipplesEmerald.mp4
+          name: BokehGlowEmerald-4K
+          path: output/BokehGlowEmerald.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: PoolRipples-ProRes
+          name: BokehGlow-ProRes
           path: |
-            output/PoolRipples-prores.mov
-            output/PoolRipplesLagoon-prores.mov
-            output/PoolRipplesSunset-prores.mov
-            output/PoolRipplesMidnight-prores.mov
-            output/PoolRipplesEmerald-prores.mov
+            output/BokehGlow-prores.mov
+            output/BokehGlowViolet-prores.mov
+            output/BokehGlowRose-prores.mov
+            output/BokehGlowGold-prores.mov
+            output/BokehGlowEmerald-prores.mov
