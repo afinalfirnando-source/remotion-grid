@@ -1,4 +1,4 @@
-name: Render FlowingLines (5 colors)
+name: Render GoldParticles
 
 on:
   workflow_dispatch:
@@ -24,79 +24,26 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render FlowingLines (ProRes)
-        run: npx remotion render src/index.tsx FlowingLines output/FlowingLines-prores.mov --codec prores --prores-profile hq
+      - name: Render GoldParticles (ProRes)
+        run: npx remotion render src/index.tsx GoldParticles output/GoldParticles-prores.mov --codec prores --prores-profile hq
 
-      - name: Render FlowingLinesCyan (ProRes)
-        run: npx remotion render src/index.tsx FlowingLinesCyan output/FlowingLinesCyan-prores.mov --codec prores --prores-profile hq
+      - name: Check ProRes size
+        run: ls -lh output/GoldParticles-prores.mov
 
-      - name: Render FlowingLinesGold (ProRes)
-        run: npx remotion render src/index.tsx FlowingLinesGold output/FlowingLinesGold-prores.mov --codec prores --prores-profile hq
+      - name: Encode GoldParticles to MP4
+        run: ffmpeg -y -i output/GoldParticles-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/GoldParticles.mp4
 
-      - name: Render FlowingLinesNeon (ProRes)
-        run: npx remotion render src/index.tsx FlowingLinesNeon output/FlowingLinesNeon-prores.mov --codec prores --prores-profile hq
+      - name: Check final file size
+        run: ls -lh output/GoldParticles.mp4
 
-      - name: Render FlowingLinesMint (ProRes)
-        run: npx remotion render src/index.tsx FlowingLinesMint output/FlowingLinesMint-prores.mov --codec prores --prores-profile hq
-
-      - name: Check ProRes sizes
-        run: ls -lh output/*.mov
-
-      - name: Encode FlowingLines to MP4
-        run: ffmpeg -y -i output/FlowingLines-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLines.mp4
-
-      - name: Encode FlowingLinesCyan to MP4
-        run: ffmpeg -y -i output/FlowingLinesCyan-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesCyan.mp4
-
-      - name: Encode FlowingLinesGold to MP4
-        run: ffmpeg -y -i output/FlowingLinesGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesGold.mp4
-
-      - name: Encode FlowingLinesNeon to MP4
-        run: ffmpeg -y -i output/FlowingLinesNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesNeon.mp4
-
-      - name: Encode FlowingLinesMint to MP4
-        run: ffmpeg -y -i output/FlowingLinesMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesMint.mp4
-
-      - name: Check final file sizes
-        run: ls -lh output/*.mp4
-
-      - name: Upload FlowingLines
+      - name: Upload GoldParticles
         uses: actions/upload-artifact@v4
         with:
-          name: FlowingLines-4K
-          path: output/FlowingLines.mp4
+          name: GoldParticles-4K
+          path: output/GoldParticles.mp4
 
-      - name: Upload FlowingLinesCyan
+      - name: Upload ProRes master
         uses: actions/upload-artifact@v4
         with:
-          name: FlowingLinesCyan-4K
-          path: output/FlowingLinesCyan.mp4
-
-      - name: Upload FlowingLinesGold
-        uses: actions/upload-artifact@v4
-        with:
-          name: FlowingLinesGold-4K
-          path: output/FlowingLinesGold.mp4
-
-      - name: Upload FlowingLinesNeon
-        uses: actions/upload-artifact@v4
-        with:
-          name: FlowingLinesNeon-4K
-          path: output/FlowingLinesNeon.mp4
-
-      - name: Upload FlowingLinesMint
-        uses: actions/upload-artifact@v4
-        with:
-          name: FlowingLinesMint-4K
-          path: output/FlowingLinesMint.mp4
-
-      - name: Upload ProRes masters
-        uses: actions/upload-artifact@v4
-        with:
-          name: FlowingLines-ProRes
-          path: |
-            output/FlowingLines-prores.mov
-            output/FlowingLinesCyan-prores.mov
-            output/FlowingLinesGold-prores.mov
-            output/FlowingLinesNeon-prores.mov
-            output/FlowingLinesMint-prores.mov
+          name: GoldParticles-ProRes
+          path: output/GoldParticles-prores.mov

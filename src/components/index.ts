@@ -57,3 +57,4 @@ export { SmokeWisps } from './SmokeWisps';
 export type { SmokeScheme } from './SmokeWisps';
 export { FlowingLines } from './FlowingLines';
 export type { LinesScheme } from './FlowingLines';
+export { GoldParticles } from './GoldParticles';
