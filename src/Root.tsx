@@ -54,6 +54,8 @@ import { PlasmaVortex } from './components/PlasmaVortex';
 import type { PlasmaScheme } from './components/PlasmaVortex';
 import { SilkGradient } from './components/SilkGradient';
 import type { SilkScheme } from './components/SilkGradient';
+import { SmokeWisps } from './components/SmokeWisps';
+import type { SmokeScheme } from './components/SmokeWisps';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1296,6 +1298,56 @@ export const RemotionRoot: React.FC = () => {
         id="SilkGradientMidnight"
         component={() => (
           <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="midnight" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SmokeWisps"
+        component={() => (
+          <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mono" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SmokeWispsEmber"
+        component={() => (
+          <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="ember" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SmokeWispsAbyss"
+        component={() => (
+          <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="abyss" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SmokeWispsMint"
+        component={() => (
+          <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SmokeWispsRoyal"
+        component={() => (
+          <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

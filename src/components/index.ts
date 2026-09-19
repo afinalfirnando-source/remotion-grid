@@ -53,3 +53,5 @@ export { PlasmaVortex } from './PlasmaVortex';
 export type { PlasmaScheme } from './PlasmaVortex';
 export { SilkGradient } from './SilkGradient';
 export type { SilkScheme } from './SilkGradient';
+export { SmokeWisps } from './SmokeWisps';
+export type { SmokeScheme } from './SmokeWisps';

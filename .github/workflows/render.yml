@@ -1,4 +1,4 @@
-name: Render SilkGradient (5 colors)
+name: Render SmokeWisps (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render SilkGradient (ProRes)
-        run: npx remotion render src/index.tsx SilkGradient output/SilkGradient-prores.mov --codec prores --prores-profile hq
+      - name: Render SmokeWisps (ProRes)
+        run: npx remotion render src/index.tsx SmokeWisps output/SmokeWisps-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkGradientSunset (ProRes)
-        run: npx remotion render src/index.tsx SilkGradientSunset output/SilkGradientSunset-prores.mov --codec prores --prores-profile hq
+      - name: Render SmokeWispsEmber (ProRes)
+        run: npx remotion render src/index.tsx SmokeWispsEmber output/SmokeWispsEmber-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkGradientLagoon (ProRes)
-        run: npx remotion render src/index.tsx SilkGradientLagoon output/SilkGradientLagoon-prores.mov --codec prores --prores-profile hq
+      - name: Render SmokeWispsAbyss (ProRes)
+        run: npx remotion render src/index.tsx SmokeWispsAbyss output/SmokeWispsAbyss-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkGradientRose (ProRes)
-        run: npx remotion render src/index.tsx SilkGradientRose output/SilkGradientRose-prores.mov --codec prores --prores-profile hq
+      - name: Render SmokeWispsMint (ProRes)
+        run: npx remotion render src/index.tsx SmokeWispsMint output/SmokeWispsMint-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SilkGradientMidnight (ProRes)
-        run: npx remotion render src/index.tsx SilkGradientMidnight output/SilkGradientMidnight-prores.mov --codec prores --prores-profile hq
+      - name: Render SmokeWispsRoyal (ProRes)
+        run: npx remotion render src/index.tsx SmokeWispsRoyal output/SmokeWispsRoyal-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode SilkGradient to MP4
-        run: ffmpeg -y -i output/SilkGradient-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradient.mp4
+      - name: Encode SmokeWisps to MP4
+        run: ffmpeg -y -i output/SmokeWisps-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWisps.mp4
 
-      - name: Encode SilkGradientSunset to MP4
-        run: ffmpeg -y -i output/SilkGradientSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientSunset.mp4
+      - name: Encode SmokeWispsEmber to MP4
+        run: ffmpeg -y -i output/SmokeWispsEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsEmber.mp4
 
-      - name: Encode SilkGradientLagoon to MP4
-        run: ffmpeg -y -i output/SilkGradientLagoon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientLagoon.mp4
+      - name: Encode SmokeWispsAbyss to MP4
+        run: ffmpeg -y -i output/SmokeWispsAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsAbyss.mp4
 
-      - name: Encode SilkGradientRose to MP4
-        run: ffmpeg -y -i output/SilkGradientRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientRose.mp4
+      - name: Encode SmokeWispsMint to MP4
+        run: ffmpeg -y -i output/SmokeWispsMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsMint.mp4
 
-      - name: Encode SilkGradientMidnight to MP4
-        run: ffmpeg -y -i output/SilkGradientMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientMidnight.mp4
+      - name: Encode SmokeWispsRoyal to MP4
+        run: ffmpeg -y -i output/SmokeWispsRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsRoyal.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload SilkGradient
+      - name: Upload SmokeWisps
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradient-4K
-          path: output/SilkGradient.mp4
+          name: SmokeWisps-4K
+          path: output/SmokeWisps.mp4
 
-      - name: Upload SilkGradientSunset
+      - name: Upload SmokeWispsEmber
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradientSunset-4K
-          path: output/SilkGradientSunset.mp4
+          name: SmokeWispsEmber-4K
+          path: output/SmokeWispsEmber.mp4
 
-      - name: Upload SilkGradientLagoon
+      - name: Upload SmokeWispsAbyss
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradientLagoon-4K
-          path: output/SilkGradientLagoon.mp4
+          name: SmokeWispsAbyss-4K
+          path: output/SmokeWispsAbyss.mp4
 
-      - name: Upload SilkGradientRose
+      - name: Upload SmokeWispsMint
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradientRose-4K
-          path: output/SilkGradientRose.mp4
+          name: SmokeWispsMint-4K
+          path: output/SmokeWispsMint.mp4
 
-      - name: Upload SilkGradientMidnight
+      - name: Upload SmokeWispsRoyal
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradientMidnight-4K
-          path: output/SilkGradientMidnight.mp4
+          name: SmokeWispsRoyal-4K
+          path: output/SmokeWispsRoyal.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: SilkGradient-ProRes
+          name: SmokeWisps-ProRes
           path: |
-            output/SilkGradient-prores.mov
-            output/SilkGradientSunset-prores.mov
-            output/SilkGradientLagoon-prores.mov
-            output/SilkGradientRose-prores.mov
-            output/SilkGradientMidnight-prores.mov
+            output/SmokeWisps-prores.mov
+            output/SmokeWispsEmber-prores.mov
+            output/SmokeWispsAbyss-prores.mov
+            output/SmokeWispsMint-prores.mov
+            output/SmokeWispsRoyal-prores.mov
