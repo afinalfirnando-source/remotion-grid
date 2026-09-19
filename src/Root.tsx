@@ -58,6 +58,8 @@ import { SmokeWisps } from './components/SmokeWisps';
 import type { SmokeScheme } from './components/SmokeWisps';
 import { FlowingLines } from './components/FlowingLines';
 import type { LinesScheme } from './components/FlowingLines';
+import { BlueFire } from './components/BlueFire';
+import type { FireScheme } from './components/BlueFire';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1400,6 +1402,56 @@ export const RemotionRoot: React.FC = () => {
         id="FlowingLinesMint"
         component={() => (
           <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BlueFire"
+        component={() => (
+          <BlueFire width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="blue" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BlueFireCrimson"
+        component={() => (
+          <BlueFire width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="crimson" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BlueFireToxic"
+        component={() => (
+          <BlueFire width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="toxic" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BlueFireViolet"
+        component={() => (
+          <BlueFire width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="violet" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="BlueFireSolar"
+        component={() => (
+          <BlueFire width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="solar" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

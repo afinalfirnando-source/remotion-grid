@@ -57,3 +57,5 @@ export { SmokeWisps } from './SmokeWisps';
 export type { SmokeScheme } from './SmokeWisps';
 export { FlowingLines } from './FlowingLines';
 export type { LinesScheme } from './FlowingLines';
+export { BlueFire } from './BlueFire';
+export type { FireScheme } from './BlueFire';
