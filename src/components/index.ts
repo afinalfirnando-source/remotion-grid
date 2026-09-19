@@ -51,3 +51,5 @@ export { PlushFur } from './PlushFur';
 export type { FurScheme } from './PlushFur';
 export { PlasmaVortex } from './PlasmaVortex';
 export type { PlasmaScheme } from './PlasmaVortex';
+export { SilkGradient } from './SilkGradient';
+export type { SilkScheme } from './SilkGradient';

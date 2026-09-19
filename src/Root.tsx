@@ -52,6 +52,8 @@ import { PlushFur } from './components/PlushFur';
 import type { FurScheme } from './components/PlushFur';
 import { PlasmaVortex } from './components/PlasmaVortex';
 import type { PlasmaScheme } from './components/PlasmaVortex';
+import { SilkGradient } from './components/SilkGradient';
+import type { SilkScheme } from './components/SilkGradient';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1244,6 +1246,56 @@ export const RemotionRoot: React.FC = () => {
         id="PlasmaVortexVenom"
         component={() => (
           <PlasmaVortex width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="venom" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkGradient"
+        component={() => (
+          <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="dusk" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkGradientSunset"
+        component={() => (
+          <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="sunset" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkGradientLagoon"
+        component={() => (
+          <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="lagoon" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkGradientRose"
+        component={() => (
+          <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="rose" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="SilkGradientMidnight"
+        component={() => (
+          <SilkGradient width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="midnight" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

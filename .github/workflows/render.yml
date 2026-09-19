@@ -1,4 +1,4 @@
-name: Render PlasmaVortex (5 colors)
+name: Render SilkGradient (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render PlasmaVortex (ProRes)
-        run: npx remotion render src/index.tsx PlasmaVortex output/PlasmaVortex-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkGradient (ProRes)
+        run: npx remotion render src/index.tsx SilkGradient output/SilkGradient-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlasmaVortexCrimson (ProRes)
-        run: npx remotion render src/index.tsx PlasmaVortexCrimson output/PlasmaVortexCrimson-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkGradientSunset (ProRes)
+        run: npx remotion render src/index.tsx SilkGradientSunset output/SilkGradientSunset-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlasmaVortexAbyss (ProRes)
-        run: npx remotion render src/index.tsx PlasmaVortexAbyss output/PlasmaVortexAbyss-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkGradientLagoon (ProRes)
+        run: npx remotion render src/index.tsx SilkGradientLagoon output/SilkGradientLagoon-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlasmaVortexInferno (ProRes)
-        run: npx remotion render src/index.tsx PlasmaVortexInferno output/PlasmaVortexInferno-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkGradientRose (ProRes)
+        run: npx remotion render src/index.tsx SilkGradientRose output/SilkGradientRose-prores.mov --codec prores --prores-profile hq
 
-      - name: Render PlasmaVortexVenom (ProRes)
-        run: npx remotion render src/index.tsx PlasmaVortexVenom output/PlasmaVortexVenom-prores.mov --codec prores --prores-profile hq
+      - name: Render SilkGradientMidnight (ProRes)
+        run: npx remotion render src/index.tsx SilkGradientMidnight output/SilkGradientMidnight-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode PlasmaVortex to MP4
-        run: ffmpeg -y -i output/PlasmaVortex-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortex.mp4
+      - name: Encode SilkGradient to MP4
+        run: ffmpeg -y -i output/SilkGradient-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradient.mp4
 
-      - name: Encode PlasmaVortexCrimson to MP4
-        run: ffmpeg -y -i output/PlasmaVortexCrimson-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexCrimson.mp4
+      - name: Encode SilkGradientSunset to MP4
+        run: ffmpeg -y -i output/SilkGradientSunset-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientSunset.mp4
 
-      - name: Encode PlasmaVortexAbyss to MP4
-        run: ffmpeg -y -i output/PlasmaVortexAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexAbyss.mp4
+      - name: Encode SilkGradientLagoon to MP4
+        run: ffmpeg -y -i output/SilkGradientLagoon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientLagoon.mp4
 
-      - name: Encode PlasmaVortexInferno to MP4
-        run: ffmpeg -y -i output/PlasmaVortexInferno-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexInferno.mp4
+      - name: Encode SilkGradientRose to MP4
+        run: ffmpeg -y -i output/SilkGradientRose-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientRose.mp4
 
-      - name: Encode PlasmaVortexVenom to MP4
-        run: ffmpeg -y -i output/PlasmaVortexVenom-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/PlasmaVortexVenom.mp4
+      - name: Encode SilkGradientMidnight to MP4
+        run: ffmpeg -y -i output/SilkGradientMidnight-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SilkGradientMidnight.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload PlasmaVortex
+      - name: Upload SilkGradient
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortex-4K
-          path: output/PlasmaVortex.mp4
+          name: SilkGradient-4K
+          path: output/SilkGradient.mp4
 
-      - name: Upload PlasmaVortexCrimson
+      - name: Upload SilkGradientSunset
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortexCrimson-4K
-          path: output/PlasmaVortexCrimson.mp4
+          name: SilkGradientSunset-4K
+          path: output/SilkGradientSunset.mp4
 
-      - name: Upload PlasmaVortexAbyss
+      - name: Upload SilkGradientLagoon
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortexAbyss-4K
-          path: output/PlasmaVortexAbyss.mp4
+          name: SilkGradientLagoon-4K
+          path: output/SilkGradientLagoon.mp4
 
-      - name: Upload PlasmaVortexInferno
+      - name: Upload SilkGradientRose
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortexInferno-4K
-          path: output/PlasmaVortexInferno.mp4
+          name: SilkGradientRose-4K
+          path: output/SilkGradientRose.mp4
 
-      - name: Upload PlasmaVortexVenom
+      - name: Upload SilkGradientMidnight
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortexVenom-4K
-          path: output/PlasmaVortexVenom.mp4
+          name: SilkGradientMidnight-4K
+          path: output/SilkGradientMidnight.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: PlasmaVortex-ProRes
+          name: SilkGradient-ProRes
           path: |
-            output/PlasmaVortex-prores.mov
-            output/PlasmaVortexCrimson-prores.mov
-            output/PlasmaVortexAbyss-prores.mov
-            output/PlasmaVortexInferno-prores.mov
-            output/PlasmaVortexVenom-prores.mov
+            output/SilkGradient-prores.mov
+            output/SilkGradientSunset-prores.mov
+            output/SilkGradientLagoon-prores.mov
+            output/SilkGradientRose-prores.mov
+            output/SilkGradientMidnight-prores.mov
