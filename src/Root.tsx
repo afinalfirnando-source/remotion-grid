@@ -56,6 +56,8 @@ import { SilkGradient } from './components/SilkGradient';
 import type { SilkScheme } from './components/SilkGradient';
 import { SmokeWisps } from './components/SmokeWisps';
 import type { SmokeScheme } from './components/SmokeWisps';
+import { FlowingLines } from './components/FlowingLines';
+import type { LinesScheme } from './components/FlowingLines';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1348,6 +1350,56 @@ export const RemotionRoot: React.FC = () => {
         id="SmokeWispsRoyal"
         component={() => (
           <SmokeWisps width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="royal" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FlowingLines"
+        component={() => (
+          <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mono" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FlowingLinesCyan"
+        component={() => (
+          <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="cyan" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FlowingLinesGold"
+        component={() => (
+          <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="gold" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FlowingLinesNeon"
+        component={() => (
+          <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="neon" />
+        )}
+        durationInFrames={DURATION + 1}
+        fps={FPS}
+        width={3840}
+        height={2160}
+      />
+      <Composition
+        id="FlowingLinesMint"
+        component={() => (
+          <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}

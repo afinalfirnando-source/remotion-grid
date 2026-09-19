@@ -55,3 +55,5 @@ export { SilkGradient } from './SilkGradient';
 export type { SilkScheme } from './SilkGradient';
 export { SmokeWisps } from './SmokeWisps';
 export type { SmokeScheme } from './SmokeWisps';
+export { FlowingLines } from './FlowingLines';
+export type { LinesScheme } from './FlowingLines';

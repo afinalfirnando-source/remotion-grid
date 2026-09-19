@@ -1,4 +1,4 @@
-name: Render SmokeWisps (5 colors)
+name: Render FlowingLines (5 colors)
 
 on:
   workflow_dispatch:
@@ -24,79 +24,79 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
-      - name: Render SmokeWisps (ProRes)
-        run: npx remotion render src/index.tsx SmokeWisps output/SmokeWisps-prores.mov --codec prores --prores-profile hq
+      - name: Render FlowingLines (ProRes)
+        run: npx remotion render src/index.tsx FlowingLines output/FlowingLines-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SmokeWispsEmber (ProRes)
-        run: npx remotion render src/index.tsx SmokeWispsEmber output/SmokeWispsEmber-prores.mov --codec prores --prores-profile hq
+      - name: Render FlowingLinesCyan (ProRes)
+        run: npx remotion render src/index.tsx FlowingLinesCyan output/FlowingLinesCyan-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SmokeWispsAbyss (ProRes)
-        run: npx remotion render src/index.tsx SmokeWispsAbyss output/SmokeWispsAbyss-prores.mov --codec prores --prores-profile hq
+      - name: Render FlowingLinesGold (ProRes)
+        run: npx remotion render src/index.tsx FlowingLinesGold output/FlowingLinesGold-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SmokeWispsMint (ProRes)
-        run: npx remotion render src/index.tsx SmokeWispsMint output/SmokeWispsMint-prores.mov --codec prores --prores-profile hq
+      - name: Render FlowingLinesNeon (ProRes)
+        run: npx remotion render src/index.tsx FlowingLinesNeon output/FlowingLinesNeon-prores.mov --codec prores --prores-profile hq
 
-      - name: Render SmokeWispsRoyal (ProRes)
-        run: npx remotion render src/index.tsx SmokeWispsRoyal output/SmokeWispsRoyal-prores.mov --codec prores --prores-profile hq
+      - name: Render FlowingLinesMint (ProRes)
+        run: npx remotion render src/index.tsx FlowingLinesMint output/FlowingLinesMint-prores.mov --codec prores --prores-profile hq
 
       - name: Check ProRes sizes
         run: ls -lh output/*.mov
 
-      - name: Encode SmokeWisps to MP4
-        run: ffmpeg -y -i output/SmokeWisps-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWisps.mp4
+      - name: Encode FlowingLines to MP4
+        run: ffmpeg -y -i output/FlowingLines-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLines.mp4
 
-      - name: Encode SmokeWispsEmber to MP4
-        run: ffmpeg -y -i output/SmokeWispsEmber-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsEmber.mp4
+      - name: Encode FlowingLinesCyan to MP4
+        run: ffmpeg -y -i output/FlowingLinesCyan-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesCyan.mp4
 
-      - name: Encode SmokeWispsAbyss to MP4
-        run: ffmpeg -y -i output/SmokeWispsAbyss-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsAbyss.mp4
+      - name: Encode FlowingLinesGold to MP4
+        run: ffmpeg -y -i output/FlowingLinesGold-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesGold.mp4
 
-      - name: Encode SmokeWispsMint to MP4
-        run: ffmpeg -y -i output/SmokeWispsMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsMint.mp4
+      - name: Encode FlowingLinesNeon to MP4
+        run: ffmpeg -y -i output/FlowingLinesNeon-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesNeon.mp4
 
-      - name: Encode SmokeWispsRoyal to MP4
-        run: ffmpeg -y -i output/SmokeWispsRoyal-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/SmokeWispsRoyal.mp4
+      - name: Encode FlowingLinesMint to MP4
+        run: ffmpeg -y -i output/FlowingLinesMint-prores.mov -vf "noise=alls=8:allf=t" -c:v libx264 -preset slow -b:v 100M -maxrate 130M -bufsize 200M -pix_fmt yuv420p output/FlowingLinesMint.mp4
 
       - name: Check final file sizes
         run: ls -lh output/*.mp4
 
-      - name: Upload SmokeWisps
+      - name: Upload FlowingLines
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWisps-4K
-          path: output/SmokeWisps.mp4
+          name: FlowingLines-4K
+          path: output/FlowingLines.mp4
 
-      - name: Upload SmokeWispsEmber
+      - name: Upload FlowingLinesCyan
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWispsEmber-4K
-          path: output/SmokeWispsEmber.mp4
+          name: FlowingLinesCyan-4K
+          path: output/FlowingLinesCyan.mp4
 
-      - name: Upload SmokeWispsAbyss
+      - name: Upload FlowingLinesGold
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWispsAbyss-4K
-          path: output/SmokeWispsAbyss.mp4
+          name: FlowingLinesGold-4K
+          path: output/FlowingLinesGold.mp4
 
-      - name: Upload SmokeWispsMint
+      - name: Upload FlowingLinesNeon
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWispsMint-4K
-          path: output/SmokeWispsMint.mp4
+          name: FlowingLinesNeon-4K
+          path: output/FlowingLinesNeon.mp4
 
-      - name: Upload SmokeWispsRoyal
+      - name: Upload FlowingLinesMint
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWispsRoyal-4K
-          path: output/SmokeWispsRoyal.mp4
+          name: FlowingLinesMint-4K
+          path: output/FlowingLinesMint.mp4
 
       - name: Upload ProRes masters
         uses: actions/upload-artifact@v4
         with:
-          name: SmokeWisps-ProRes
+          name: FlowingLines-ProRes
           path: |
-            output/SmokeWisps-prores.mov
-            output/SmokeWispsEmber-prores.mov
-            output/SmokeWispsAbyss-prores.mov
-            output/SmokeWispsMint-prores.mov
-            output/SmokeWispsRoyal-prores.mov
+            output/FlowingLines-prores.mov
+            output/FlowingLinesCyan-prores.mov
+            output/FlowingLinesGold-prores.mov
+            output/FlowingLinesNeon-prores.mov
+            output/FlowingLinesMint-prores.mov
