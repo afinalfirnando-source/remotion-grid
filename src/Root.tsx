@@ -58,7 +58,6 @@ import { SmokeWisps } from './components/SmokeWisps';
 import type { SmokeScheme } from './components/SmokeWisps';
 import { FlowingLines } from './components/FlowingLines';
 import type { LinesScheme } from './components/FlowingLines';
-import { GoldParticles } from './components/GoldParticles';
 import { palettes } from './utils/colors';
 
 const FPS = 30;
@@ -1401,16 +1400,6 @@ export const RemotionRoot: React.FC = () => {
         id="FlowingLinesMint"
         component={() => (
           <FlowingLines width={3840} height={2160} totalFrames={DURATION} speed={1} scheme="mint" />
-        )}
-        durationInFrames={DURATION + 1}
-        fps={FPS}
-        width={3840}
-        height={2160}
-      />
-      <Composition
-        id="GoldParticles"
-        component={() => (
-          <GoldParticles width={3840} height={2160} totalFrames={DURATION} speed={1} />
         )}
         durationInFrames={DURATION + 1}
         fps={FPS}
